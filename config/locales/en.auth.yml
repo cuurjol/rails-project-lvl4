@@ -1,0 +1,10 @@
+---
+en:
+  web:
+    auth:
+      callback:
+        success: You have successfully logged into your account
+        failure: Invalid authentication provider
+      destroy:
+        success: You have successfully logged out of your account
+        failure: Invalid session

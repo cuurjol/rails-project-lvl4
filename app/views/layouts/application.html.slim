@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title = t('.app_name')
+    meta[name="viewport" content="width=device-width,initial-scale=1"]
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_pack_tag 'application', media: 'all'
+    = javascript_pack_tag 'application'
+
+  body
+    = render(partial: 'layouts/shared/nav')
+    = render(partial: 'layouts/shared/flash')
+    = yield

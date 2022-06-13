@@ -1,0 +1,10 @@
+---
+en:
+  layouts:
+    application:
+      app_name: Github RQA
+    shared:
+      nav:
+        brand: Github RQA
+        authentication: Authentication
+        sign_out: Sign out

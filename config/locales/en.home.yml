@@ -1,0 +1,16 @@
+---
+en:
+  web:
+    home:
+      index:
+        main_title: Github repositories quality analyzer (RQA)
+        description_1: >-
+          A service where Github users can check the quality of the code in their public repositories. You will be
+          able to add your repositories from your Github account after authenticating through Github on our service.
+        description_2: >-
+          Code quality checks for registered repositories are run manually, where the latest commit is taken from all
+          existing commits, or automatically, when you create a new commit. If the checks fail or find stylistic errors
+          (or suspicious constructs), then our service sends a final result report to your email which linked to your
+          Github account.
+        description_3: >-
+          All completed checks will be available on your registered repository page of our service.

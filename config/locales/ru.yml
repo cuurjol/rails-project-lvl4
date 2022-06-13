@@ -1,0 +1,10 @@
+---
+ru:
+  layouts:
+    application:
+      app_name: Github АКР
+    shared:
+      nav:
+        brand: Github АКР
+        authentication: Аутентификация
+        sign_out: Выход

@@ -1,0 +1,9 @@
+regular:
+  email: regular_email@example.com
+  nickname: MyString
+  token: MyString
+
+another_regular:
+  email: another_regular_email@example.com
+  nickname: MyString
+  token: MyString

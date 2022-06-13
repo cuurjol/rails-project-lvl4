@@ -1,0 +1,22 @@
+nav.navbar.navbar-expand-md.navbar-dark.navbar-static-top.bg-dark
+  .container-fluid
+    = link_to(root_path, class: 'navbar-brand') do
+      .d-flex
+        i.fa-brands.fa-github.fa-2x
+        span.align-self-center.ms-2 = t('.brand')
+    = button_tag(class: 'navbar-toggler', type: 'button',
+            data: { 'bs-toggle' => 'collapse', 'bs-target' => '#navbarSupportedContent' },
+            aria: { expanded: 'false', controls: 'navbarSupportedContent', label: 'Toggle navigation' }) do
+      = content_tag(:span, '', class: 'navbar-toggler-icon')
+
+    #navbarSupportedContent.collapse.navbar-collapse.flex-row-reverse
+      ul.navbar-nav
+        - if user_signed_in?
+          li.nav-item.dropdown
+            = link_to(current_user.email, '#', class: 'nav-link active dropdown-toggle', id: 'userDropdownMenuLink',
+                    data: { 'bs-toggle' => 'dropdown' }, aria: { expanded: 'false' }, role: :button)
+            ul.dropdown-menu.dropdown-menu-dark[aria-labelledby="userDropdownMenuLink"]
+              li = link_to(t('.sign_out'), sign_out_path, method: :delete, class: 'dropdown-item')
+        - else
+          li.nav-item
+            = link_to(t('.authentication'), auth_request_path('github'), method: :post, class: 'nav-link active')
