@@ -2,7 +2,7 @@
 
 module Web
   class ApplicationController < ::ApplicationController
-    include Authorization
+    include AuthConcern
     include Pagy::Backend
     include Pundit::Authorization
 
