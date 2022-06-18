@@ -7,4 +7,5 @@ ru:
       nav:
         brand: Github АКР
         authentication: Аутентификация
+        my_repositories: Мои репозитории
         sign_out: Выход

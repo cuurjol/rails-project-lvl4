@@ -1,0 +1,21 @@
+ruby:
+  name: Ruby name
+  full_name: Ruby full name
+  description: Ruby description
+  language: Ruby
+  html_url: <%= Faker::Internet.url('host'.to_sym => 'example.com') %>
+  github_id: <%= JSON.parse(load_fixture('files/github_repositories.json')).first['id'] %>
+  github_created_at: <%= DateTime.now %>
+  github_updated_at: <%= DateTime.now + 5.days %>
+  user: regular
+
+javascript:
+  name: Javascript name
+  full_name: Javascript full name
+  description: Javascript description
+  language: Javascript
+  html_url: <%= Faker::Internet.url('host'.to_sym => 'example.com') %>
+  github_id: <%= rand(999_999) %>
+  github_created_at: <%= DateTime.now %>
+  github_updated_at: <%= DateTime.now + 5.days %>
+  user: another_regular

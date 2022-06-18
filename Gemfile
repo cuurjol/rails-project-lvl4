@@ -17,9 +17,14 @@ gem 'webpacker', '~> 5.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+gem 'enumerize'
+gem 'octokit', '~> 4.0'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
+gem 'pagy', '~> 5.10'
+gem 'pundit'
 gem 'rails-i18n'
+gem 'ransack'
 gem 'rubocop', '~> 1.23', require: false
 gem 'rubocop-rails', require: false
 gem 'simple_form'
@@ -53,6 +58,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'webmock'
 end
 
 group :production do

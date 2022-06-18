@@ -1,0 +1,18 @@
+---
+en:
+  activerecord:
+    models:
+      repository:
+        one: Repository
+        other: Repositories
+        zero: Repositories
+
+    attributes:
+      repository:
+        name: Name
+        full_name: Full name
+        description: Description
+        language: Language
+        github_id: Repository ID (Github)
+        created_at: Created at (Github)
+        updated_at: Updated at (Github)

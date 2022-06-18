@@ -1,0 +1,18 @@
+---
+ru:
+  activerecord:
+    models:
+      repository:
+        one: Репозиторий
+        few: Репозитория
+        many: Репозиториев
+
+    attributes:
+      repository:
+        name: Название
+        full_name: Полное название
+        description: Описание
+        language: Язык
+        github_id: ID репозитория (Github)
+        github_created_at: Создано (Github)
+        github_updated_at: Обновлено (Github)

@@ -16,6 +16,7 @@ nav.navbar.navbar-expand-md.navbar-dark.navbar-static-top.bg-dark
             = link_to(current_user.email, '#', class: 'nav-link active dropdown-toggle', id: 'userDropdownMenuLink',
                     data: { 'bs-toggle' => 'dropdown' }, aria: { expanded: 'false' }, role: :button)
             ul.dropdown-menu.dropdown-menu-dark[aria-labelledby="userDropdownMenuLink"]
+              li = link_to(t('.my_repositories'), repositories_path, class: 'dropdown-item')
               li = link_to(t('.sign_out'), sign_out_path, method: :delete, class: 'dropdown-item')
         - else
           li.nav-item

@@ -1,0 +1,6 @@
+.container-md.my-4
+  h2.mb-4 = t('.main_title')
+
+  .row
+    .col-12.col-lg-6
+      = render(partial: 'form', locals: { repository: @repository })

@@ -1,0 +1,39 @@
+---
+en:
+  web:
+    repositories:
+      index:
+        main_title: My repositories
+        search_form_title: Repository search form
+        actions_table_column: Actions
+        actions:
+          create_repository: Create repository
+          show_repository: Show
+          destroy_repository: Destroy
+          confirm_destruction: Confirm destruction
+      new:
+        main_title: New repository
+      create:
+        success: Repository was successfully created. Repository information is being updated from Github
+        failure: There are several errors when creating a new repository
+      show:
+        main_title: Repository information
+        github_link: Github repository
+        my_repository_link: My repositories
+        control_panel_button: Repository management
+        update_link: Update repository
+        confirm_update: Confirm update
+        destroy_link: Destroy repository
+        confirm_destruction: Confirm destruction
+      update_from_github:
+        success: Repository information is being updated from Github
+      destroy:
+        success: Repository was successfully destroyed
+      form:
+        submit: Save
+        cancel_link: Cancel
+      search_form:
+        submit: Search
+        clear_filter_link: Clear
+        name_cont: Name contains
+        language_eq: Language equals

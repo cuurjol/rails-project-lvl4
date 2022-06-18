@@ -1,0 +1,47 @@
+.container-lg.my-4
+  .p-4.align-items-center.border.border-2.rounded-3.shadow.bg-white
+    .row
+      .p-3.p-lg-5.pt-lg-0
+        .mb-4
+          h2 = t('.main_title')
+          hr
+        .row.g-0
+          .col-md-6
+            h5
+              strong = "#{Repository.human_attribute_name(:name)}:"
+              =< @repository.name
+          .col-md-6
+            h5
+              strong = "#{Repository.human_attribute_name(:full_name)}:"
+              =< @repository.full_name
+          .col-md-6
+            h5
+              strong = "#{Repository.human_attribute_name(:language)}:"
+              =< @repository.language
+          .col-md-6
+            h5
+              strong = "#{Repository.human_attribute_name(:github_id)}:"
+              =< @repository.github_id
+          .col-md-6
+            h5
+              strong = "#{Repository.human_attribute_name(:github_created_at)}:"
+              =< l(@repository.github_created_at, format: :long)
+          .col-md-6
+            h5
+              strong = "#{Repository.human_attribute_name(:github_updated_at)}:"
+              =< l(@repository.github_updated_at, format: :long)
+          .col-12
+            h5
+              strong = "#{Repository.human_attribute_name(:description)}:"
+              =< @repository.description
+        hr
+        .d-flex.justify-content-between
+          = link_to(t('.my_repository_link'), repositories_path, class: 'btn btn-primary')
+          = link_to(t('.github_link'), @repository.html_url, class: 'btn btn-success')
+          = button_tag(t('.control_panel_button'), data: { 'bs-toggle': :dropdown, 'aria-expanded': false },
+                  type: :button, class: 'btn btn-danger dropdown-toggle text-wrap')
+          ul.dropdown-menu.dropdown-menu-dark
+            li = link_to(t('.update_link'), repository_path(@repository), method: :patch, class: 'dropdown-item',
+                    data: { confirm: t('.confirm_update') })
+            li = link_to(t('.destroy_link'), repository_path(@repository), method: :delete, class: 'dropdown-item',
+                    data: { confirm: t('.confirm_destruction') })

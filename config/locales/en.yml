@@ -7,4 +7,5 @@ en:
       nav:
         brand: Github RQA
         authentication: Authentication
+        my_repositories: My repositories
         sign_out: Sign out

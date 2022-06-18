@@ -1,0 +1,13 @@
+= search_form_for(search, url: repositories_path, method: :get) do |f|
+  .row
+    .col-lg-6
+      = f.input(:name_cont, label: t('.name_cont'), wrapper_html: { class: 'my-2' },
+              label_html: { class: 'fst-italic' }, required: false)
+    .col-lg-6
+      = f.input(:language_eq, as: :select, label: t('.language_eq'),
+              collection: Repository.language.values.map(&:text).zip(Repository.language.values),
+              wrapper_html: { class: 'my-2' }, label_html: { class: 'fst-italic' },
+              input_html: { class: 'form-select' }, required: false)
+  .custom-form-actions
+    = f.button(:submit, t('.submit'), class: 'btn-success my-2')
+    = link_to(t('.clear_filter_link'), repositories_path, class: 'btn btn-danger my-2')

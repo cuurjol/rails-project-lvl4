@@ -1,0 +1,39 @@
+---
+ru:
+  web:
+    repositories:
+      index:
+        main_title: Мои репозитории
+        search_form_title: Форма поиска репозиториев
+        actions_table_column: Действия
+        actions:
+          create_repository: Создать репозитрий
+          show_repository: Показать
+          destroy_repository: Удалить
+          confirm_destruction: Подтвердить удаление
+      new:
+        main_title: Новый репозиторий
+      create:
+        success: Репозиторий был успешно создан. Информация о репозитории обновляется из Github
+        failure: Есть несколько ошибок при создании нового репозитория
+      show:
+        main_title: Информация о репозитории
+        github_link: Github репозиторий
+        my_repository_link: Мои репозитории
+        control_panel_button: Управление репозиторием
+        update_link: Обновить репозиторий
+        confirm_update: Подтвердить обновление
+        destroy_link: Удалить репозиторий
+        confirm_destruction: Подтвердить удаление
+      update_from_github:
+        success: Информация о репозитории обновляется из Github
+      destroy:
+        success: Репозиторий был успешно удалён
+      form:
+        submit: Сохранить
+        cancel_link: Отмена
+      search_form:
+        submit: Искать
+        clear_filter_link: Очистить
+        name_cont: Название содержит
+        language_eq: Язык равен

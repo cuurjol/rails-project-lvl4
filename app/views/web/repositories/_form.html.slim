@@ -1,0 +1,6 @@
+= simple_form_for(repository) do |f|
+  = f.input(:github_id, as: :select, collection: client_repos, wrapper_html: { class: 'my-2' },
+          label_html: { class: 'fst-italic' }, input_html: { class: 'form-select' }, required: true)
+  .custom-form-actions
+    = f.button(:submit, t('.submit'), class: 'btn-success my-2')
+    = link_to(t('.cancel_link'), repositories_path, class: 'btn btn-secondary my-2')

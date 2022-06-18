@@ -1,0 +1,20 @@
+# frozen_string_literal: true
+
+class UpdateRepositoryInfoJob < ApplicationJob
+  queue_as :default
+
+  def perform(github_id)
+    repository = Repository.find_by(github_id: github_id)
+    current_user = repository.user
+    repository.update(repository_params(github_id, current_user))
+  end
+
+  private
+
+  def repository_params(github_id, user)
+    repo = GithubClient.new(user.id, user.token).find_repo(github_id)
+
+    { name: repo.name, full_name: repo.full_name, description: repo.description, language: repo.language,
+      html_url: repo.html_url, github_created_at: repo.created_at, github_updated_at: repo.updated_at }
+  end
+end

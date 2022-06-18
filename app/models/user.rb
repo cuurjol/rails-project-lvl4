@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  has_many :repositories, dependent: :destroy
+
   validates :email, presence: true, uniqueness: true
 
   def self.update_or_create_with_omniauth(auth)
