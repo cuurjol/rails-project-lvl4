@@ -9,15 +9,15 @@
           .col-md-6
             h5
               strong = "#{Repository.human_attribute_name(:name)}:"
-              =< @repository.name
+              =< @repository.name || render(partial: 'layouts/shared/spinner')
           .col-md-6
             h5
               strong = "#{Repository.human_attribute_name(:full_name)}:"
-              =< @repository.full_name
+              =< @repository.full_name || render(partial: 'layouts/shared/spinner')
           .col-md-6
             h5
               strong = "#{Repository.human_attribute_name(:language)}:"
-              =< @repository.language
+              =< @repository.language || render(partial: 'layouts/shared/spinner')
           .col-md-6
             h5
               strong = "#{Repository.human_attribute_name(:github_id)}:"
@@ -25,23 +25,70 @@
           .col-md-6
             h5
               strong = "#{Repository.human_attribute_name(:github_created_at)}:"
-              =< l(@repository.github_created_at, format: :long)
+              - if @repository.github_created_at.nil?
+                =< render(partial: 'layouts/shared/spinner')
+              - else
+                =< l(@repository.github_created_at, format: :long)
           .col-md-6
             h5
               strong = "#{Repository.human_attribute_name(:github_updated_at)}:"
-              =< l(@repository.github_updated_at, format: :long)
+              - if @repository.github_updated_at.nil?
+                =< render(partial: 'layouts/shared/spinner')
+              - else
+                =< l(@repository.github_updated_at, format: :long)
           .col-12
             h5
               strong = "#{Repository.human_attribute_name(:description)}:"
-              =< @repository.description
+              =< @repository.description || render(partial: 'layouts/shared/spinner')
         hr
-        .d-flex.justify-content-between
-          = link_to(t('.my_repository_link'), repositories_path, class: 'btn btn-primary')
-          = link_to(t('.github_link'), @repository.html_url, class: 'btn btn-success')
+        .d-flex.flex-md-row.justify-content-between.flex-column.mb-4
+          = link_to(t('.my_repository_link'), repositories_path, class: 'btn btn-primary my-2 my-md-0')
+          = link_to(t('.github_repository_link'), @repository.html_url, class: 'btn btn-success my-2 my-md-0')
           = button_tag(t('.control_panel_button'), data: { 'bs-toggle': :dropdown, 'aria-expanded': false },
-                  type: :button, class: 'btn btn-danger dropdown-toggle text-wrap')
+                  type: :button, class: 'btn btn-danger dropdown-toggle text-wrap my-2 my-md-0')
           ul.dropdown-menu.dropdown-menu-dark
-            li = link_to(t('.update_link'), repository_path(@repository), method: :patch, class: 'dropdown-item',
-                    data: { confirm: t('.confirm_update') })
+            li = link_to(t('.create_check_link'), repository_checks_path(@repository), method: :post,
+                    class: 'dropdown-item', data: { confirm: t('.confirm_creation') })
+            li = link_to(t('.update_link'), update_from_github_repository_path(@repository), method: :patch,
+                    class: 'dropdown-item', data: { confirm: t('.confirm_update') })
             li = link_to(t('.destroy_link'), repository_path(@repository), method: :delete, class: 'dropdown-item',
                     data: { confirm: t('.confirm_destruction') })
+
+        h2 = t('.list_of_checks_title')
+        - if @repository.checks.exists?
+          .table-responsive.border.border-2.rounded-3.border-dark.mb-2
+            table.table.table-bordered.table-sm.table-hover.border-dark.text-center.align-middle.mb-0
+              thead.table-dark.border-dark
+                tr.align-middle
+                  th[scope='col'] #
+                  th[scope='col'] = Repository::Check.human_attribute_name(:commit_sha)
+                  th[scope='col'] = Repository::Check.human_attribute_name(:passed)
+                  th[scope='col'] = Repository::Check.human_attribute_name(:created_at)
+                  th[scope='col'] = Repository::Check.human_attribute_name(:aasm_state)
+                  th[scope='col'] = t('.actions_table_column')
+              tbody.border-dark
+                - @checks.each.with_index(@pagy.offset + 1) do |check, i|
+                  tr
+                    th[scope='row'] = i
+                    - if check.pending?
+                      td = render(partial: 'layouts/shared/spinner')
+                      td = render(partial: 'layouts/shared/spinner')
+                    - else
+                      td = link_to(check.commit_sha[0..7], check.commit_url)
+                      td = t(check.passed)
+                    td = l(check.created_at, format: :long)
+                    td = check.aasm.human_state
+                    td
+                      .d-flex.justify-content-center
+                        = link_to(t('.actions.show_check'), repository_check_path(@repository, check),
+                                class: 'btn btn-sm btn-primary')
+              tfoot.table-dark.border-dark
+                tr
+                  td.border-bottom-0[colspan='6']
+                    .d-flex.flex-wrap.justify-content-between.align-items-center
+                      .mb-2.mb-md-0
+                        == pagy_info(@pagy)
+                      .pagination-sm
+                        == pagy_bootstrap_nav(@pagy) if @pagy.pages > 1
+        - else
+          p == pagy_info(@pagy)

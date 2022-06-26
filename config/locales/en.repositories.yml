@@ -18,13 +18,19 @@ en:
         failure: There are several errors when creating a new repository
       show:
         main_title: Repository information
-        github_link: Github repository
+        github_repository_link: Github repository
         my_repository_link: My repositories
         control_panel_button: Repository management
+        create_check_link: Create check
+        confirm_creation: Confirm creation
         update_link: Update repository
         confirm_update: Confirm update
         destroy_link: Destroy repository
         confirm_destruction: Confirm destruction
+        list_of_checks_title: List of checks
+        actions_table_column: Actions
+        actions:
+          show_check: Show
       update_from_github:
         success: Repository information is being updated from Github
       destroy:

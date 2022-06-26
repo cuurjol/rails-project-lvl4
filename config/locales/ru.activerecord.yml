@@ -6,6 +6,10 @@ ru:
         one: Репозиторий
         few: Репозитория
         many: Репозиториев
+      check:
+        one: Проверка
+        few: Проверки
+        many: Проверок
 
     attributes:
       repository:
@@ -13,6 +17,19 @@ ru:
         full_name: Полное название
         description: Описание
         language: Язык
-        github_id: ID репозитория (Github)
+        github_id: Репозиторий ID (Github)
         github_created_at: Создано (Github)
         github_updated_at: Обновлено (Github)
+      repository/check:
+        aasm_state: Состояние
+        aasm_state/created: Создано
+        aasm_state/checking: Проверка
+        aasm_state/finished: Завершено
+        aasm_state/failure: Неудача
+        passed: Проверка пройдена
+        offences_amount: Всего нарушений
+        commit_sha: Коммит SHA
+        commit_url: Коммит URL
+        repository_id: Репозиторий ID
+        created_at: Создано
+        updated_at: Обновлено

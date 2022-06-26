@@ -18,13 +18,19 @@ ru:
         failure: Есть несколько ошибок при создании нового репозитория
       show:
         main_title: Информация о репозитории
-        github_link: Github репозиторий
+        github_repository_link: Github репозиторий
         my_repository_link: Мои репозитории
         control_panel_button: Управление репозиторием
+        create_check_link: Создать проверку
+        confirm_creation: Подтвердить создание
         update_link: Обновить репозиторий
         confirm_update: Подтвердить обновление
         destroy_link: Удалить репозиторий
         confirm_destruction: Подтвердить удаление
+        list_of_checks_title: Список проверок
+        actions_table_column: Действия
+        actions:
+          show_check: Показать
       update_from_github:
         success: Информация о репозитории обновляется из Github
       destroy:

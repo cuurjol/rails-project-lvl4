@@ -14,3 +14,11 @@ ul.pagination {
     flex-direction: column;
   }
 }
+
+.icon-toggle[aria-expanded=true] .icon-collapsed {
+  display: none;
+}
+
+.icon-toggle[aria-expanded=false] .icon-expanded {
+  display: none;
+}

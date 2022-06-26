@@ -1,5 +1,7 @@
 ---
 ru:
+  "true": Да
+  "false": Нет
   layouts:
     application:
       app_name: Github АКР
@@ -9,3 +11,5 @@ ru:
         authentication: Аутентификация
         my_repositories: Мои репозитории
         sign_out: Выход
+      spinner:
+        loading_title: Загрузка...

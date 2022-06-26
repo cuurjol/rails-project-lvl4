@@ -1,5 +1,7 @@
 ---
 en:
+  "true": "Yes"
+  "false": "No"
   layouts:
     application:
       app_name: Github RQA
@@ -9,3 +11,5 @@ en:
         authentication: Authentication
         my_repositories: My repositories
         sign_out: Sign out
+      spinner:
+        loading_title: Loading...

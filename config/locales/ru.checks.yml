@@ -1,0 +1,19 @@
+---
+ru:
+  web:
+    repositories:
+      checks:
+        create:
+          success: Проверка была успешно создана. Выполняется процесс анализатора качества репозитория
+        show:
+          main_title: 'Проверка #%{id}'
+          repository_link: Вернуться к репозиторию
+          github_commit_link: Github коммит
+          list_of_files_title: Список файлов с нарушениями
+          offences_files:
+            file_path: Путь к файлу
+            offenses_count: Количество
+            offenses:
+              message: Сообщение
+              rule: Правило
+              line_column: 'Строка:Столбец'

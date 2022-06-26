@@ -6,6 +6,10 @@ en:
         one: Repository
         other: Repositories
         zero: Repositories
+      check:
+        one: Check
+        other: Checks
+        zero: Checks
 
     attributes:
       repository:
@@ -16,3 +20,16 @@ en:
         github_id: Repository ID (Github)
         created_at: Created at (Github)
         updated_at: Updated at (Github)
+      repository/check:
+        aasm_state: State
+        aasm_state/created: Created
+        aasm_state/checking: Checking
+        aasm_state/finished: Finished
+        aasm_state/failure: Failure
+        passed: Check passed
+        offences_amount: Offences amount
+        commit_sha: Commit SHA
+        commit_url: Commit URL
+        repository_id: Repository ID
+        created_at: Created at
+        updated_at: Updated at

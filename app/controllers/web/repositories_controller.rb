@@ -11,6 +11,7 @@ module Web
     def new
       authorize(Repository)
       @repository = Repository.new
+      @client_repos = GithubClient.new(current_user.id, current_user.token).client_repos
     end
 
     def create
@@ -18,7 +19,7 @@ module Web
       @repository = current_user.repositories.build(repository_params)
 
       if @repository.save
-        UpdateRepositoryInfoJob.perform_later(@repository.github_id)
+        UpdateRepositoryInfoJob.perform_later(@repository.id)
         redirect_to(repositories_path, notice: t('.success'))
       else
         flash.now.alert = t('.failure')
@@ -28,6 +29,7 @@ module Web
 
     def show
       authorize(repository)
+      @pagy, @checks = pagy(repository.checks.order(created_at: :desc))
     end
 
     def destroy
@@ -38,7 +40,7 @@ module Web
 
     def update_from_github
       authorize(repository)
-      UpdateRepositoryInfoJob.perform_later(repository.github_id)
+      UpdateRepositoryInfoJob.perform_later(repository.id)
       redirect_to(repository, notice: t('.success'))
     end
 

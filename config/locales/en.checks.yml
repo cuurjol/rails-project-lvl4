@@ -1,0 +1,19 @@
+---
+en:
+  web:
+    repositories:
+      checks:
+        create:
+          success: Check was successfully created. A process of repository quality analyzer is being executed
+        show:
+          main_title: 'Check #%{id}'
+          repository_link: Back to repository
+          github_commit_link: Github commit
+          list_of_files_title: List of files with offences
+          offences_files:
+            file_path: File path
+            offenses_count: Count
+            offenses:
+              message: Message
+              rule: Rule
+              line_column: 'Line:Column'

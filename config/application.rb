@@ -40,5 +40,7 @@ module GithubQuality
     config.i18n.default_locale = :ru
 
     config.i18n.fallbacks = [:en]
+
+    config.action_controller.include_all_helpers = false
   end
 end

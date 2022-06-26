@@ -1,21 +1,23 @@
+<% github_repositories = JSON.parse(load_fixture('files/github_repositories.json')) %>
+
 ruby:
-  name: Ruby name
-  full_name: Ruby full name
-  description: Ruby description
-  language: Ruby
-  html_url: <%= Faker::Internet.url('host'.to_sym => 'example.com') %>
-  github_id: <%= JSON.parse(load_fixture('files/github_repositories.json')).first['id'] %>
-  github_created_at: <%= DateTime.now %>
-  github_updated_at: <%= DateTime.now + 5.days %>
+  name: <%= github_repositories.first['name'] %>
+  full_name: <%= github_repositories.first['full_name'] %>
+  description: <%= github_repositories.first['description'] %>
+  language: <%= github_repositories.first['language'] %>
+  html_url: <%= github_repositories.first['html_url'] %>
+  github_id: <%= github_repositories.first['id'] %>
+  github_created_at: <%= github_repositories.first['created_at'] %>
+  github_updated_at: <%= github_repositories.first['updated_at'] %>
   user: regular
 
 javascript:
-  name: Javascript name
-  full_name: Javascript full name
-  description: Javascript description
-  language: Javascript
-  html_url: <%= Faker::Internet.url('host'.to_sym => 'example.com') %>
-  github_id: <%= rand(999_999) %>
-  github_created_at: <%= DateTime.now %>
-  github_updated_at: <%= DateTime.now + 5.days %>
+  name: <%= github_repositories.last['name'] %>
+  full_name: <%= github_repositories.last['full_name'] %>
+  description: <%= github_repositories.last['description'] %>
+  language: <%= github_repositories.last['language'] %>
+  html_url: <%= github_repositories.last['html_url'] %>
+  github_id: <%= github_repositories.last['id'] %>
+  github_created_at: <%= github_repositories.last['created_at'] %>
+  github_updated_at: <%= github_repositories.last['updated_at'] %>
   user: another_regular

@@ -1,0 +1,64 @@
+.container-lg.my-4
+  .p-4.align-items-center.border.border-2.rounded-3.shadow.bg-white
+    .row
+      .p-3.p-lg-5.pt-lg-0
+        .mb-4
+          h2 = t('.main_title', id: @check.id)
+        hr
+          .row.g-0
+            .col-md-6
+              h5
+                strong = "#{Repository::Check.human_attribute_name(:aasm_state)}:"
+                =< @check.aasm.human_state
+            .col-md-6
+              h5
+                strong = "#{Repository::Check.human_attribute_name(:passed)}:"
+                =< t(@check.passed) || render(partial: 'layouts/shared/spinner')
+            .col-md-6
+              h5
+                strong = "#{Repository::Check.human_attribute_name(:offences_amount)}:"
+                =< @check.offences_amount || render(partial: 'layouts/shared/spinner')
+            .col-md-6
+              h5
+                strong = "#{Repository::Check.human_attribute_name(:created_at)}:"
+                =< l(@check.created_at, format: :long)
+          hr
+          .d-flex.flex-md-row.justify-content-between.flex-column.mb-4
+            = link_to(t('.repository_link'), repository_path(@check.repository), class: 'btn btn-primary my-2 my-md-0')
+            - unless @check.pending?
+              = link_to(t('.github_commit_link'), @check.commit_url, class: 'btn btn-success my-2 my-md-0')
+
+          - if @check.offences_files.present?
+            h2 = t('.list_of_files_title')
+            .table-responsive.border.border-2.rounded-3.border-dark.mb-2
+              table.table.table-bordered.table-sm.table-hover.border-dark.text-center.align-middle.mb-0
+                thead.table-dark.border-dark
+                  tr.align-middle
+                    th[scope='col'] #
+                    th[scope='col'] = t('.offences_files.file_path')
+                    th[scope='col'] = t('.offences_files.offenses_count')
+                tbody.border-dark
+                  - @check.offences_files.each.with_index(1) do |file, i|
+                    tr
+                      td = link_to('#', data: { 'bs-toggle' => 'collapse', 'bs-target' => "#table-offenses-#{i}" },
+                              aria: { expanded: 'false', controls: "table-offenses-#{i}" },
+                              class: 'text-dark icon-toggle') do
+                        i.fa-solid.fa-circle-plus.fa-2x.icon-collapsed
+                        i.fa-solid.fa-circle-minus.fa-2x.icon-expanded
+                      td = file['file_path']
+                      td = file['offenses_count']
+                    tr.collapse id="table-offenses-#{i}"
+                      td[colspan='3']
+                        .table-responsive.border.border-2.rounded-3.border-dark.mx-4.my-2
+                          table.table.table-bordered.table-sm.table-hover.border-dark.text-center.align-middle.mb-0
+                            thead.table-dark.border-dark
+                              tr.align-middle
+                                th[scope='col'] = t('.offences_files.offenses.message')
+                                th[scope='col'] = t('.offences_files.offenses.rule')
+                                th[scope='col'] = t('.offences_files.offenses.line_column')
+                            tbody.border-dark
+                              - file['offenses'].each do |offense|
+                                tr
+                                  td = offense['message']
+                                  td = offense['rule']
+                                  td = "#{offense['line']}:#{offense['column']}"

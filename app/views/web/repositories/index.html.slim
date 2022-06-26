@@ -19,11 +19,11 @@
                   th.w-25[scope='col'] = t('.actions_table_column')
               tbody.border-dark
                 - @repositories.each.with_index(@pagy.offset + 1) do |repository, i|
-                  tr.text-wrap
+                  tr
                     th[scope='row'] = i
-                    td = repository.name
-                    td = repository.description
-                    td = repository.language
+                    td = repository.name || render(partial: 'layouts/shared/spinner')
+                    td = repository.description || render(partial: 'layouts/shared/spinner')
+                    td = repository.language || render(partial: 'layouts/shared/spinner')
                     td
                       .d-flex.justify-content-center
                         = link_to(t('.actions.show_repository'), repository_path(repository),

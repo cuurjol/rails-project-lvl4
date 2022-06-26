@@ -2,6 +2,9 @@
 en:
   pundit:
     default: You are not authorized to perform this action
+    repository/check_policy:
+      create?: You don't have permissions to create a new check
+      show?: You don't have permissions to view this check
     repository_policy:
       index?: You don't have permissions to view a list of repositories
       new?: You don't have permissions to create a new repository

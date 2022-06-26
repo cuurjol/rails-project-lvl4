@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     root 'home#index'
 
     resources :repositories, only: %i[index new create show destroy] do
+      scope module: :repositories do
+        resources :checks, only: %i[create show]
+      end
+
       patch :update_from_github, on: :member
     end
 
