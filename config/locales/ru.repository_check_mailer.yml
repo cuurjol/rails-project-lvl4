@@ -1,0 +1,17 @@
+---
+ru:
+  repository_check_mailer:
+    check_passed:
+      subject: '%{repository_full_name}: Отчёт о пройденной проверке'
+      main_text_html: Проверка репозитория была успешно пройдена для %{repository_link}.
+      main_text: Проверка репозитория была успешно пройдена для %{repository_name} — %{repository_link} .
+      extra_link_title: здесь
+      extra_text_html: Подробнее о проверке репозитория можно узнать %{check_link}.
+      extra_text: Подробнее о проверке репозитория можно узнать здесь — %{check_link} .
+    check_failed:
+      subject: '%{repository_full_name}: Отчёт о неудачной проверке'
+      main_text_html: Есть несколько ошибок при проверке репозитория %{repository_link}.
+      main_text: Есть несколько ошибок при проверке репозитория %{repository_name} — %{repository_link} .
+      extra_link_title: здесь
+      extra_text_html: Подробнее о проверке репозитория можно узнать %{check_link}.
+      extra_text: Подробнее о проверке репозитория можно узнать здесь — %{check_link} .

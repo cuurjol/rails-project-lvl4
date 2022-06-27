@@ -1,0 +1,17 @@
+ruby_check:
+  aasm_state: failure
+  passed: false
+  offences_amount: 0
+  offences_files: []
+  commit_sha: nil
+  commit_url: nil
+  repository: ruby
+
+javascript_check:
+  aasm_state: failure
+  passed: false
+  offences_amount: 0
+  offences_files: []
+  commit_sha: nil
+  commit_url: nil
+  repository: javascript

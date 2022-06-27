@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   scope module: :web do
+    mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
     root 'home#index'
 
     resources :repositories, only: %i[index new create show destroy] do

@@ -12,6 +12,8 @@ class ExecuteRepositoryCheckJob < ApplicationJob
       Rails.logger.debug(e.full_message)
       check.reject!
     ensure
+      mailer_action = check.passed? ? :check_passed : :check_failed
+      RepositoryCheckMailer.with(check: check).send(mailer_action).deliver_now
       RepositoryManager.remove_repository(check.repository)
     end
   end

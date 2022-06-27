@@ -37,6 +37,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails'
   gem 'faker'
+  gem 'letter_opener_web', '~> 2.0'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.4'
 end

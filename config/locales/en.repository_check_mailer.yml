@@ -1,0 +1,17 @@
+---
+en:
+  repository_check_mailer:
+    check_passed:
+      subject: '%{repository_full_name}: Report of passed check'
+      main_text_html: Repository check was successfully passed for %{repository_link}.
+      main_text: Repository check was successfully passed for %{repository_name} — %{repository_link} .
+      extra_link_title: here
+      extra_text_html: More information about the repository check can be found %{check_link}.
+      extra_text: More information about the repository check can be found here — %{check_link} .
+    check_failed:
+      subject: '%{repository_full_name}: Report of failed check'
+      main_text_html: There are several errors when checking out the %{repository_link} repository.
+      main_text: There are several errors when checking out the %{repository_name} repository — %{repository_link} .
+      extra_link_title: here
+      extra_text_html: More information about the repository check can be found %{check_link}.
+      extra_text: More information about the repository check can be found here — %{check_link} .
