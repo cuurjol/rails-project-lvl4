@@ -5,7 +5,7 @@ class GithubClient
 
   def initialize(user_id, access_token)
     @user_id = user_id
-    @client = Octokit::Client.new(access_token: access_token)
+    @client = Octokit::Client.new(access_token: access_token, per_page: 100)
   end
 
   def find_repo(github_id)
@@ -22,6 +22,21 @@ class GithubClient
   def fetch_last_commit(github_id)
     commits = commits(github_id)
     { commit_url: commits.first['html_url'], commit_sha: commits.first['sha'] }
+  end
+
+  def create_hook(github_id)
+    url = Rails.application.routes.url_helpers.api_checks_url
+    config = { url: url, content_type: 'json' }
+    options = { events: ['push'], active: true }
+    @client.create_hook(github_id, 'web', config, options)
+  end
+
+  def remove_hook(github_id)
+    url = Rails.application.routes.url_helpers.api_checks_url
+    webhook = @client.hooks(github_id).find { |hook| hook.config.url == url }
+    return false if webhook.blank?
+
+    @client.remove_hook(github_id, webhook.id)
   end
 
   private

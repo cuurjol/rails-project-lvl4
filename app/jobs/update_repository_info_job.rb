@@ -6,7 +6,7 @@ class UpdateRepositoryInfoJob < ApplicationJob
   def perform(repository_id)
     repository = Repository.find(repository_id)
     current_user = repository.user
-    repository.update(repository_params(repository.github_id, current_user))
+    repository.update!(repository_params(repository.github_id, current_user))
   end
 
   private

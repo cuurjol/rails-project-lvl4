@@ -7,7 +7,9 @@ class ExecuteRepositoryCheckJob < ApplicationJob
     check = Repository::Check.find(check_id)
 
     begin
-      start_process(check)
+      check.start!
+      check.update!(check_params(check.repository))
+      check.finish!
     rescue StandardError => e
       Rails.logger.debug(e.full_message)
       check.reject!
@@ -19,12 +21,6 @@ class ExecuteRepositoryCheckJob < ApplicationJob
   end
 
   private
-
-  def start_process(check)
-    check.start!
-    check.update(check_params(check.repository))
-    check.finish!
-  end
 
   def check_params(repository)
     RepositoryManager.clone_repository(repository)

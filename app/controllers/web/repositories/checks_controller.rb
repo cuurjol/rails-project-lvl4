@@ -5,7 +5,7 @@ module Web
     class ChecksController < Web::ApplicationController
       def create
         authorize(Repository::Check)
-        check = current_user.repositories.find(params[:repository_id]).checks.create
+        check = current_user.repositories.find(params[:repository_id]).checks.create!
         ExecuteRepositoryCheckJob.perform_later(check.id)
         redirect_to(repository_path(check.repository), notice: t('.success'))
       end

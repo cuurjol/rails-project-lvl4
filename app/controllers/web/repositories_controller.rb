@@ -4,7 +4,7 @@ module Web
   class RepositoriesController < Web::ApplicationController
     def index
       authorize(Repository)
-      @search = Repository.ransack(params[:q])
+      @search = Repository.includes(:checks).ransack(params[:q])
       @pagy, @repositories = pagy(@search.result.order(created_at: :desc))
     end
 
@@ -19,7 +19,7 @@ module Web
       @repository = current_user.repositories.build(repository_params)
 
       if @repository.save
-        UpdateRepositoryInfoJob.perform_later(@repository.id)
+        run_jobs(@repository.id)
         redirect_to(repositories_path, notice: t('.success'))
       else
         flash.now.alert = t('.failure')
@@ -34,7 +34,8 @@ module Web
 
     def destroy
       authorize(repository)
-      repository.destroy
+      repository.destroy!
+      RemoveGithubWebhookJob.perform_later(repository.github_id, current_user.id)
       redirect_to(repositories_path, notice: t('.success'))
     end
 
@@ -45,6 +46,11 @@ module Web
     end
 
     private
+
+    def run_jobs(repository_id)
+      UpdateRepositoryInfoJob.perform_later(repository_id)
+      CreateGithubWebhookJob.perform_later(repository_id)
+    end
 
     def repository
       @repository ||= Repository.find(params[:id])

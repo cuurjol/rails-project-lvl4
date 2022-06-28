@@ -17,4 +17,8 @@ Rails.application.routes.draw do
     post 'auth/:provider', to: 'auth#request', as: :auth_request
     delete 'auth/sign_out', to: 'auth#destroy', as: :sign_out
   end
+
+  namespace :api do
+    resources :checks, only: :create
+  end
 end
