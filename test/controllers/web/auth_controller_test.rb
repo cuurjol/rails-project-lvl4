@@ -15,7 +15,7 @@ module Web
       assert_difference(-> { User.count }) do
         get(callback_auth_url('github'))
         assert_redirected_to(root_url)
-        assert(user_signed_in?)
+        assert(signed_in?)
       end
     end
 
@@ -26,7 +26,7 @@ module Web
       assert_no_difference(-> { User.count }) do
         get(callback_auth_url('github'))
         assert_redirected_to(root_url)
-        assert_not(user_signed_in?)
+        assert_not(signed_in?)
       end
     end
 

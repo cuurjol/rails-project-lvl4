@@ -10,7 +10,7 @@ module AuthConcern
     session.clear
   end
 
-  def user_signed_in?
+  def signed_in?
     !!current_user
   end
 

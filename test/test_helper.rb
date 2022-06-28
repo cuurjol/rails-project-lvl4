@@ -37,7 +37,7 @@ module ActionDispatch
       delete(sign_out_url)
     end
 
-    def user_signed_in?
+    def signed_in?
       session[:user_id].present? && current_user.present?
     end
 

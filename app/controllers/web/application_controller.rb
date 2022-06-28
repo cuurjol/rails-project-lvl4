@@ -6,7 +6,7 @@ module Web
     include Pagy::Backend
     include Pundit::Authorization
 
-    helper_method(:user_signed_in?, :current_user)
+    helper_method(:signed_in?, :current_user)
 
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
