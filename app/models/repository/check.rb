@@ -5,26 +5,18 @@ class Repository
     include AASM
 
     aasm do
-      state :created, initial: true
-      state :checking, :finished, :failure
-
-      event :start do
-        transitions from: %i[created failed], to: :checking
-      end
+      state :pending, initial: true
+      state :finished, :failure
 
       event :finish do
-        transitions from: :checking, to: :finished
+        transitions from: :pending, to: :finished
       end
 
       event :reject do
-        transitions from: :checking, to: :failure
+        transitions from: :pending, to: :failure
       end
     end
 
     belongs_to :repository
-
-    def pending?
-      created? || checking?
-    end
   end
 end

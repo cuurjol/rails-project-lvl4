@@ -74,8 +74,16 @@
                       td = render(partial: 'layouts/shared/spinner')
                       td = render(partial: 'layouts/shared/spinner')
                     - else
-                      td = link_to(check.commit_sha[0..7], check.commit_url)
-                      td = t(check.passed)
+                      - if check.commit_sha.present?
+                        td = link_to(check.commit_sha[0..7], check.commit_url)
+                      - else
+                        td = t('.no_data')
+
+                      - if check.passed.nil?
+                        td = t('.no_data')
+                      - else
+                        td = t(check.passed)
+
                     td = l(check.created_at, format: :long)
                     td = check.aasm.human_state
                     td

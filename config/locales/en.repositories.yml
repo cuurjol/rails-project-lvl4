@@ -29,6 +29,7 @@ en:
         confirm_destruction: Confirm destruction
         list_of_checks_title: List of checks
         actions_table_column: Actions
+        no_data: No data
         actions:
           show_check: Show
       update_from_github:

@@ -9,7 +9,7 @@ class GithubClient
   end
 
   def find_repo(github_id)
-    repos.find { |repo| repo.id == github_id }
+    @client.repo(github_id)
   end
 
   def client_repos

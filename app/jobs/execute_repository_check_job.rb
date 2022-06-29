@@ -7,11 +7,11 @@ class ExecuteRepositoryCheckJob < ApplicationJob
     check = Repository::Check.find(check_id)
 
     begin
-      check.start!
       check.update!(check_params(check.repository))
       check.finish!
     rescue StandardError => e
       Rails.logger.debug(e.full_message)
+      check.passed = false
       check.reject!
     ensure
       mailer_action = check.passed? ? :check_passed : :check_failed

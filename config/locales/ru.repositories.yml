@@ -29,6 +29,7 @@ ru:
         confirm_destruction: Подтвердить удаление
         list_of_checks_title: Список проверок
         actions_table_column: Действия
+        no_data: Нет данных
         actions:
           show_check: Показать
       update_from_github:
