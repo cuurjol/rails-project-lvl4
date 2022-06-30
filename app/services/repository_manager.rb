@@ -2,6 +2,10 @@
 
 class RepositoryManager
   BASE_DIRECTORY = 'tmp/github_repositories'
+  LINTERS = {
+    javascript: { utility_command: 'yarn run eslint', config: '.eslintrc.yml' },
+    ruby: { utility_command: 'bundle exec rubocop', config: '.rubocop.yml' }
+  }.freeze
 
   class << self
     def clone_repository(repository)
@@ -11,8 +15,8 @@ class RepositoryManager
     def scan_repository(repository)
       language = repository.language.to_sym
       files = directory_path(repository)
-      options = { format: 'json', config: LinterExecutor::CONFIG_FILES[language] }
-      LinterExecutor.run(language, files: files, options: options)
+      utility_command, config = LINTERS[language].values
+      BashCommand.run("#{utility_command} #{files} --format json --config #{config}")
     end
 
     def remove_repository(repository)
