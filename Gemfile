@@ -18,6 +18,7 @@ gem 'webpacker', '~> 5.0'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'aasm'
+gem 'dry-container'
 gem 'enumerize'
 gem 'octokit', '~> 4.0'
 gem 'omniauth-github'

@@ -4,7 +4,7 @@ module Parsers
   class JavascriptLinter
     class << self
       def build_data(text)
-        json_hash = JSON.parse(text[/\[.*\]/], symbolize_names: true)
+        json_hash = JSON.parse(text, symbolize_names: true)
         offences_amount = json_hash.sum { |file| file[:errorCount] }
         passed = offences_amount.zero?
         offences_files = build_files(json_hash)

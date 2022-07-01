@@ -117,5 +117,5 @@ Rails.application.configure do
     authentication: :cram_md5
   }
 
-  routes.default_url_options = { host: ENV['BASE_URL'] }
+  routes.default_url_options = { host: ENV.fetch('BASE_URL', nil) }
 end

@@ -1,0 +1,1024 @@
+{
+  "files": [
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/Rakefile",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/app/channels/application_cable/channel.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/app/channels/application_cable/connection.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/app/controllers/application_controller.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/app/controllers/comments_controller.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/app/controllers/events_controller.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        },
+        {
+          "severity": "convention",
+          "message": "Assignment Branch Condition size for password_guard! is too high. [<2, 30, 9> 31.38/17]",
+          "cop_name": "Metrics/AbcSize",
+          "corrected": false,
+          "correctable": false,
+          "location": {
+            "line": 55,
+            "column": 3
+          }
+        },
+        {
+          "severity": "convention",
+          "message": "Cyclomatic complexity for password_guard! is too high. [8/7]",
+          "cop_name": "Metrics/CyclomaticComplexity",
+          "corrected": false,
+          "correctable": false,
+          "location": {
+            "line": 55,
+            "column": 3
+          }
+        },
+        {
+          "severity": "convention",
+          "message": "Perceived complexity for password_guard! is too high. [9/8]",
+          "cop_name": "Metrics/PerceivedComplexity",
+          "corrected": false,
+          "correctable": false,
+          "location": {
+            "line": 55,
+            "column": 3
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/app/controllers/photos_controller.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/app/controllers/registrations_controller.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/app/controllers/subscriptions_controller.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        },
+        {
+          "severity": "convention",
+          "message": "Assignment Branch Condition size for create is too high. [<2, 17, 5> 17.83/17]",
+          "cop_name": "Metrics/AbcSize",
+          "corrected": false,
+          "correctable": false,
+          "location": {
+            "line": 6,
+            "column": 3
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/app/controllers/users_controller.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/app/helpers/application_helper.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/app/helpers/comments_helper.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/app/helpers/events_helper.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/app/helpers/photos_helper.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/app/helpers/subscriptions_helper.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/app/helpers/users_helper.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/app/jobs/application_job.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/app/mailers/application_mailer.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/app/mailers/event_mailer.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/app/models/application_record.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/app/models/comment.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        },
+        {
+          "severity": "convention",
+          "message": "Remove explicit presence validation for `event`.",
+          "cop_name": "Rails/RedundantPresenceValidationOnBelongsTo",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 5,
+            "column": 21
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/app/models/event.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        },
+        {
+          "severity": "convention",
+          "message": "Remove explicit presence validation for `user`.",
+          "cop_name": "Rails/RedundantPresenceValidationOnBelongsTo",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 12,
+            "column": 20
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/app/models/photo.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        },
+        {
+          "severity": "convention",
+          "message": "Remove explicit presence validation for `event`.",
+          "cop_name": "Rails/RedundantPresenceValidationOnBelongsTo",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 7,
+            "column": 21
+          }
+        },
+        {
+          "severity": "convention",
+          "message": "Remove explicit presence validation for `user`.",
+          "cop_name": "Rails/RedundantPresenceValidationOnBelongsTo",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 8,
+            "column": 20
+          }
+        },
+        {
+          "severity": "convention",
+          "message": "Use `where.not(id: nil)` instead of manually constructing negated SQL in `where`.",
+          "cop_name": "Rails/WhereNot",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 11,
+            "column": 26
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/app/models/subscription.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        },
+        {
+          "severity": "convention",
+          "message": "Remove explicit presence validation for `event`.",
+          "cop_name": "Rails/RedundantPresenceValidationOnBelongsTo",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 5,
+            "column": 21
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/app/models/user.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        },
+        {
+          "severity": "convention",
+          "message": "Avoid using `update_all` because it skips validations.",
+          "cop_name": "Rails/SkipsModelValidations",
+          "corrected": false,
+          "correctable": false,
+          "location": {
+            "line": 25,
+            "column": 57
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/app/uploaders/avatar_uploader.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/app/uploaders/photo_uploader.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/config.ru",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/config/application.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/config/boot.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/config/environment.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/config/environments/development.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        },
+        {
+          "severity": "convention",
+          "message": "Prefer `Rails.root.join('path/to')`.",
+          "cop_name": "Rails/FilePath",
+          "corrected": false,
+          "correctable": false,
+          "location": {
+            "line": 17,
+            "column": 6
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/config/environments/production.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        },
+        {
+          "severity": "convention",
+          "message": "Use `$stdout` instead of `STDOUT`.",
+          "cop_name": "Style/GlobalStdStream",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 87,
+            "column": 50
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/config/environments/test.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/config/initializers/application_controller_renderer.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/config/initializers/assets.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/config/initializers/backtrace_silencers.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/config/initializers/carrierwave.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/config/initializers/content_security_policy.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/config/initializers/cookies_serializer.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/config/initializers/devise.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Line is too long. [154/120]",
+          "cop_name": "Layout/LineLength",
+          "corrected": false,
+          "correctable": false,
+          "location": {
+            "line": 11,
+            "column": 121
+          }
+        },
+        {
+          "severity": "convention",
+          "message": "Line is too long. [150/120]",
+          "cop_name": "Layout/LineLength",
+          "corrected": false,
+          "correctable": false,
+          "location": {
+            "line": 117,
+            "column": 121
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/config/initializers/filter_parameter_logging.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/config/initializers/flash_renderer.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        },
+        {
+          "severity": "convention",
+          "message": "Assignment Branch Condition size for render is too high. [<3, 17, 4> 17.72/17]",
+          "cop_name": "Metrics/AbcSize",
+          "corrected": false,
+          "correctable": false,
+          "location": {
+            "line": 3,
+            "column": 5
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/config/initializers/inflections.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/config/initializers/mime_types.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/config/initializers/wrap_parameters.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/config/puma.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        },
+        {
+          "severity": "convention",
+          "message": "Use `fetch(\"RAILS_MAX_THREADS\", 5)` instead of `fetch(\"RAILS_MAX_THREADS\") { 5 }`.",
+          "cop_name": "Style/RedundantFetchBlock",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 7,
+            "column": 21
+          }
+        },
+        {
+          "severity": "convention",
+          "message": "Prefer single-quoted strings when you don't need string interpolation or special symbols.",
+          "cop_name": "Style/StringLiterals",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 7,
+            "column": 27
+          }
+        },
+        {
+          "severity": "convention",
+          "message": "Use `fetch(\"PORT\", 3000)` instead of `fetch(\"PORT\") { 3000 }`.",
+          "cop_name": "Style/RedundantFetchBlock",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 12,
+            "column": 17
+          }
+        },
+        {
+          "severity": "convention",
+          "message": "Prefer single-quoted strings when you don't need string interpolation or special symbols.",
+          "cop_name": "Style/StringLiterals",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 12,
+            "column": 23
+          }
+        },
+        {
+          "severity": "convention",
+          "message": "Prefer single-quoted strings when you don't need string interpolation or special symbols.",
+          "cop_name": "Style/StringLiterals",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 16,
+            "column": 23
+          }
+        },
+        {
+          "severity": "convention",
+          "message": "Prefer single-quoted strings when you don't need string interpolation or special symbols.",
+          "cop_name": "Style/StringLiterals",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 16,
+            "column": 38
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/config/routes.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "tmp/github_repositories/cuurjol/barbecue/config/spring.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "offense_count": 70,
+    "target_file_count": 50,
+    "inspected_file_count": 50
+  }
+}

@@ -7,25 +7,37 @@ class ExecuteRepositoryCheckJob < ApplicationJob
     check = Repository::Check.find(check_id)
 
     begin
-      check.update!(check_params(check.repository))
-      check.finish!
+      start_process(check)
     rescue StandardError => e
       Rails.logger.debug(e.full_message)
-      check.passed = false
-      check.reject!
+      reject_process(check)
     ensure
-      mailer_action = check.passed? ? :check_passed : :check_failed
-      RepositoryCheckMailer.with(check: check).send(mailer_action).deliver_now
-      RepositoryManager.remove_repository(check.repository)
+      finish_process(check)
     end
   end
 
   private
 
+  def start_process(check)
+    ApplicationContainer[:repository_manager].clone_repository(check.repository)
+    check.update!(check_params(check.repository))
+    check.finish!
+  end
+
+  def reject_process(check)
+    check.passed = false
+    check.reject!
+  end
+
+  def finish_process(check)
+    mailer_action = check.passed? ? :check_passed : :check_failed
+    RepositoryCheckMailer.with(check: check).send(mailer_action).deliver_now
+    ApplicationContainer[:repository_manager].remove_repository(check.repository)
+  end
+
   def check_params(repository)
-    RepositoryManager.clone_repository(repository)
-    scan_result = RepositoryManager.scan_repository(repository)
-    github_client = GithubClient.new(repository.user.id, repository.user.token)
+    scan_result = ApplicationContainer[:repository_manager].scan_repository(repository)
+    github_client = ApplicationContainer[:github_client].new(repository.user.id, repository.user.token)
     linter_parser = "parsers/#{repository.language}_linter".classify.constantize
     commit_data = github_client.fetch_last_commit(repository.github_id)
     linter_parser.build_data(scan_result).merge(commit_data)

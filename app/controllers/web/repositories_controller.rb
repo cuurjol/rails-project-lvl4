@@ -11,7 +11,7 @@ module Web
     def new
       authorize(Repository)
       @repository = Repository.new
-      @client_repos = GithubClient.new(current_user.id, current_user.token).client_repos
+      @client_repos = ApplicationContainer[:github_client].new(current_user.id, current_user.token).client_repos
     end
 
     def create
@@ -19,7 +19,7 @@ module Web
       @repository = current_user.repositories.build(repository_params)
 
       if @repository.save
-        run_jobs(@repository.id)
+        run_jobs(@repository)
         redirect_to(repositories_path, notice: t('.success'))
       else
         flash.now.alert = t('.failure')
@@ -47,9 +47,9 @@ module Web
 
     private
 
-    def run_jobs(repository_id)
-      UpdateRepositoryInfoJob.perform_later(repository_id)
-      CreateGithubWebhookJob.perform_later(repository_id)
+    def run_jobs(repository)
+      UpdateRepositoryInfoJob.perform_later(repository.id)
+      CreateGithubWebhookJob.perform_later(repository.github_id, current_user.id)
     end
 
     def repository

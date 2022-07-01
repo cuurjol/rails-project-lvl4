@@ -3,7 +3,7 @@
 class RepositoryManager
   BASE_DIRECTORY = 'tmp/github_repositories'
   LINTERS = {
-    javascript: { utility_command: 'yarn run eslint', config: '.eslintrc.yml' },
+    javascript: { utility_command: 'npx eslint', config: '.eslintrc.yml' },
     ruby: { utility_command: 'bundle exec rubocop', config: '.rubocop.yml' }
   }.freeze
 
