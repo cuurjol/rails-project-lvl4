@@ -22,8 +22,7 @@ en:
         updated_at: Updated at (Github)
       repository/check:
         aasm_state: State
-        aasm_state/created: Created
-        aasm_state/checking: Checking
+        aasm_state/pending: Pending
         aasm_state/finished: Finished
         aasm_state/failure: Failure
         passed: Check passed

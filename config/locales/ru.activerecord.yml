@@ -22,8 +22,7 @@ ru:
         github_updated_at: Обновлено (Github)
       repository/check:
         aasm_state: Состояние
-        aasm_state/created: Создано
-        aasm_state/checking: Проверка
+        aasm_state/pending: Ожидание
         aasm_state/finished: Завершено
         aasm_state/failure: Неудача
         passed: Проверка пройдена

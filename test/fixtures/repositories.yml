@@ -1,9 +1,11 @@
 <% github_repositories = JSON.parse(load_fixture('files/github_repositories.json'), 'symbolize_names'.to_sym => true) %>
 
 ruby:
+  language: ruby
   github_id: <%= github_repositories.first[:id] %>
   user: regular
 
 javascript:
+  language: javascript
   github_id: <%= github_repositories.last[:id] %>
   user: another_regular
