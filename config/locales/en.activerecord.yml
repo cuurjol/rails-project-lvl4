@@ -26,7 +26,7 @@ en:
         aasm_state/finished: Finished
         aasm_state/failure: Failure
         passed: Check passed
-        offences_amount: Offences amount
+        offenses_amount: Offenses amount
         commit_sha: Commit SHA
         commit_url: Commit URL
         repository_id: Repository ID

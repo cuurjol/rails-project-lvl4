@@ -10,7 +10,7 @@ ru:
           repository_link: Вернуться к репозиторию
           github_commit_link: Github коммит
           list_of_files_title: Список файлов с нарушениями
-          offences_files:
+          offenses_files:
             file_path: Путь к файлу
             offenses_count: Количество
             offenses:

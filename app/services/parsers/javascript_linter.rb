@@ -5,10 +5,10 @@ module Parsers
     class << self
       def build_data(text)
         json_hash = JSON.parse(text, symbolize_names: true)
-        offences_amount = json_hash.sum { |file| file[:errorCount] }
-        passed = offences_amount.zero?
-        offences_files = build_files(json_hash)
-        { offences_amount: offences_amount, passed: passed, offences_files: offences_files }
+        offenses_amount = json_hash.sum { |file| file[:errorCount] }
+        passed = offenses_amount.zero?
+        offenses_files = build_files(json_hash)
+        { offenses_amount: offenses_amount, passed: passed, offenses_files: offenses_files }
       end
 
       private
@@ -16,19 +16,19 @@ module Parsers
       def build_files(files)
         files.select { |file| file[:messages].present? }.map do |file_hash|
           file_path = file_hash[:filePath][Regexp.new("(?<=#{RepositoryManager::BASE_DIRECTORY}/).*")]
-          offenses = build_offences(file_hash[:messages])
+          offenses = build_offenses(file_hash[:messages])
           offenses_count = file_hash[:errorCount]
           { file_path: file_path, offenses_count: offenses_count, offenses: offenses }
         end
       end
 
-      def build_offences(offences)
-        offences.map do |offence|
+      def build_offenses(offenses)
+        offenses.map do |offense|
           {
-            rule: offence[:ruleId],
-            message: offence[:message],
-            line: offence[:line],
-            column: offence[:column]
+            rule: offense[:ruleId],
+            message: offense[:message],
+            line: offense[:line],
+            column: offense[:column]
           }
         end
       end
