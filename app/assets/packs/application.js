@@ -6,9 +6,12 @@
 import * as bootstrap from 'bootstrap'
 import "../stylesheets/application.scss"
 import "@fortawesome/fontawesome-free/css/all"
+import './pagy.js.erb'
 import Rails from "@rails/ujs"
 
 Rails.start()
+
+window.addEventListener('load', Pagy.init);
 
 function closeFlashMessage() {
 	let flash_element = document.getElementById('flashMessage')

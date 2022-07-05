@@ -33,7 +33,7 @@ Pagy::DEFAULT[:size] = [1, 2, 2, 1] # default
 
 # Array extra: Paginate arrays efficiently, avoiding expensive array-wrapping and without overriding
 # See https://ddnexus.github.io/pagy/extras/array
-# require 'pagy/extras/array'
+require 'pagy/extras/array'
 
 # Calendar extra: Add pagination filtering by calendar time unit (year, quarter, month, week, day)
 # See https://ddnexus.github.io/pagy/extras/calendar
@@ -182,7 +182,7 @@ require 'pagy/extras/bootstrap'
 
 # Standalone extra: Use pagy in non Rack environment/gem
 # See https://ddnexus.github.io/pagy/extras/standalone
-# require 'pagy/extras/standalone'
+require 'pagy/extras/standalone'
 # Pagy::DEFAULT[:url] = 'http://www.example.com/subdir'  # optional default
 
 # Rails

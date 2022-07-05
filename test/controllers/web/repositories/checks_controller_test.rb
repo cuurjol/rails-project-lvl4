@@ -21,7 +21,7 @@ module Web
             assert { check.repository == @ruby_repository }
             assert { !check.passed? }
             assert { check.finished? }
-            assert { check.offenses_amount.positive? }
+            assert { check.offense_files.present? }
           end
         end
       end

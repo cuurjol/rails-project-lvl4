@@ -26,7 +26,6 @@ ru:
         aasm_state/finished: Завершено
         aasm_state/failure: Неудача
         passed: Проверка пройдена
-        offenses_amount: Всего нарушений
         commit_sha: Коммит SHA
         commit_url: Коммит URL
         repository_id: Репозиторий ID

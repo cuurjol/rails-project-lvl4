@@ -1,0 +1,26 @@
+ruby:
+  locals = { offense_files: @offense_files, pagy_offense_files: @pagy_offense_files,
+             offenses_pagy_array: @offenses_pagy_array }
+  table_offenses = params[:table_offenses].to_i
+  offenses_pagy = @offenses_pagy_array[table_offenses]
+
+- if params[:table_offenses].present? && params[:offenses].present?
+  |
+    function renderTableOffenses() {
+      let table = document.getElementById("table-offenses-#{table_offenses}");
+      let resultHTML = "#{j(render(partial: 'table_offenses', locals: { offenses_pagy: offenses_pagy }))}";
+      table.children[0].innerHTML = `${resultHTML}`;
+      Pagy.init(table);
+    }
+
+    renderTableOffenses();
+- else
+  |
+    function renderTableOffenseFiles() {
+      let table = document.getElementById('table-offense-files');
+      let resultHTML = "#{j(render(partial: 'table_offense_files', locals: locals))}";
+      table.innerHTML = `${resultHTML}`;
+      Pagy.init(table);
+    }
+
+    renderTableOffenseFiles();

@@ -7,13 +7,14 @@ en:
           success: Check was successfully created. A process of repository quality analyzer is being executed
         show:
           main_title: 'Check #%{id}'
+          offense_count: Offense count
           repository_link: Back to repository
           github_commit_link: Github commit
           list_of_files_title: List of files with offenses
-          offenses_files:
-            file_path: File path
-            offenses_count: Count
-            offenses:
-              message: Message
-              rule: Rule
-              line_column: 'Line:Column'
+        table_offense_files:
+          file_path_column: File path
+          offenses_count_column: Count
+        table_offenses:
+          message_column: Message
+          rule_column: Rule
+          line_column_column: 'Line:Column'

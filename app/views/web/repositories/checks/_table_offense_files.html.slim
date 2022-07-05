@@ -1,0 +1,27 @@
+table.table.table-bordered.table-sm.table-hover.border-dark.text-center.align-middle.mb-0 id='table-offense-files'
+  thead.table-dark.border-dark
+    tr.align-middle
+      th[scope='col'] #
+      th[scope='col'] = t('.file_path_column')
+      th[scope='col'] = t('.offenses_count_column')
+  tbody.border-dark
+    - offense_files.each_with_index do |offense_file, i|
+      tr
+        td = link_to('#', data: { 'bs-toggle' => 'collapse', 'bs-target' => "#table-offenses-#{i}" },
+                aria: { expanded: 'false', controls: "table-offenses-#{i}" },
+                class: 'text-dark icon-toggle') do
+          i.fa-solid.fa-circle-plus.fa-2x.icon-collapsed
+          i.fa-solid.fa-circle-minus.fa-2x.icon-expanded
+        td = offense_file['file_path']
+        td = offense_file['offense_count']
+      tr.collapse id="table-offenses-#{i}"
+        td[colspan='3']
+          = render(partial: 'table_offenses', locals: { offenses_pagy: offenses_pagy_array[i] })
+  tfoot.table-dark.border-dark
+    tr
+      td.border-bottom-0[colspan='3']
+        .d-flex.flex-wrap.justify-content-between.align-items-center
+          .mb-2.mb-md-0
+            == pagy_info(pagy_offense_files)
+          .pagination-sm
+            == pagy_bootstrap_nav(pagy_offense_files) if pagy_offense_files.pages > 1

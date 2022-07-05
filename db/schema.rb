@@ -32,8 +32,7 @@ ActiveRecord::Schema.define(version: 2022_06_29_105913) do
   create_table "repository_checks", force: :cascade do |t|
     t.string "aasm_state", default: "pending", null: false
     t.boolean "passed"
-    t.integer "offenses_amount"
-    t.json "offenses_files"
+    t.json "offense_files"
     t.string "commit_sha"
     t.string "commit_url"
     t.integer "repository_id", null: false

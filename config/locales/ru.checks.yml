@@ -7,13 +7,14 @@ ru:
           success: Проверка была успешно создана. Выполняется процесс анализатора качества репозитория
         show:
           main_title: 'Проверка #%{id}'
+          offense_count: Количество нарушений
           repository_link: Вернуться к репозиторию
           github_commit_link: Github коммит
           list_of_files_title: Список файлов с нарушениями
-          offenses_files:
-            file_path: Путь к файлу
-            offenses_count: Количество
-            offenses:
-              message: Сообщение
-              rule: Правило
-              line_column: 'Строка:Столбец'
+        table_offense_files:
+          file_path_column: Путь к файлу
+          offenses_count_column: Количество
+        table_offenses:
+          message_column: Сообщение
+          rule_column: Правило
+          line_column_column: 'Строка:Столбец'
