@@ -30,9 +30,8 @@ class GithubClient
     @client.create_hook(github_id, 'web', config, options)
   end
 
-  def remove_hook(github_id)
-    url = Rails.application.routes.url_helpers.api_checks_url
-    webhook = @client.hooks(github_id).find { |hook| hook.config.url == url }
+  def remove_hook(github_id, api_url)
+    webhook = @client.hooks(github_id).find { |hook| hook.config.url == api_url }
     return false if webhook.blank?
 
     @client.remove_hook(github_id, webhook.id)

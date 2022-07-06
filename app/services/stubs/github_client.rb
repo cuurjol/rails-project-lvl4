@@ -20,7 +20,7 @@ module Stubs
 
     def create_hook(_github_id, _api_url); end
 
-    def remove_hook(_github_id); end
+    def remove_hook(_github_id, _api_url); end
 
     private
 
