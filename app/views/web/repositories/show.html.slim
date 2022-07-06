@@ -9,15 +9,30 @@
           .col-md-6
             h5
               strong = "#{Repository.human_attribute_name(:name)}:"
-              =< @repository.name || render(partial: 'layouts/shared/spinner')
+              - if @repository.fetching?
+                span =< render(partial: 'layouts/shared/spinner')
+              - elsif @repository.name.present?
+                span =< @repository.name
+              - else
+                span.fst-italic.text-danger =< t('.no_data')
           .col-md-6
             h5
               strong = "#{Repository.human_attribute_name(:full_name)}:"
-              =< @repository.full_name || render(partial: 'layouts/shared/spinner')
+              - if @repository.fetching?
+                span =< render(partial: 'layouts/shared/spinner')
+              - elsif @repository.full_name.present?
+                span =< @repository.full_name
+              - else
+                span.fst-italic.text-danger =< t('.no_data')
           .col-md-6
             h5
               strong = "#{Repository.human_attribute_name(:language)}:"
-              =< @repository.language || render(partial: 'layouts/shared/spinner')
+              - if @repository.fetching?
+                span =< render(partial: 'layouts/shared/spinner')
+              - elsif @repository.language.present?
+                span =< @repository.language
+              - else
+                span.fst-italic.text-danger =< t('.no_data')
           .col-md-6
             h5
               strong = "#{Repository.human_attribute_name(:github_id)}:"
@@ -25,21 +40,34 @@
           .col-md-6
             h5
               strong = "#{Repository.human_attribute_name(:github_created_at)}:"
-              - if @repository.github_created_at.nil?
-                =< render(partial: 'layouts/shared/spinner')
+              - if @repository.fetching?
+                span =< render(partial: 'layouts/shared/spinner')
+              - elsif @repository.github_created_at.present?
+                span =< l(@repository.github_created_at, format: :long)
               - else
-                =< l(@repository.github_created_at, format: :long)
+                span.fst-italic.text-danger =< t('.no_data')
           .col-md-6
             h5
               strong = "#{Repository.human_attribute_name(:github_updated_at)}:"
-              - if @repository.github_updated_at.nil?
-                =< render(partial: 'layouts/shared/spinner')
+              - if @repository.fetching?
+                span =< render(partial: 'layouts/shared/spinner')
+              - elsif @repository.github_updated_at.present?
+                span =< l(@repository.github_updated_at, format: :long)
               - else
-                =< l(@repository.github_updated_at, format: :long)
+                span.fst-italic.text-danger =< t('.no_data')
+          .col-md-6
+            h5
+              strong = "#{Repository.human_attribute_name(:aasm_state)}:"
+              =< @repository.aasm.human_state
           .col-12
             h5
               strong = "#{Repository.human_attribute_name(:description)}:"
-              =< @repository.description || render(partial: 'layouts/shared/spinner')
+              - if @repository.fetching?
+                span =< render(partial: 'layouts/shared/spinner')
+              - elsif @repository.description.present?
+                span =< @repository.description
+              - else
+                span.fst-italic.text-danger =< t('.no_data')
         hr
         .d-flex.flex-md-row.justify-content-between.flex-column.mb-4
           = link_to(t('.my_repository_link'), repositories_path, class: 'btn btn-primary my-2 my-md-0')
@@ -77,10 +105,10 @@
                       - if check.commit_sha.present?
                         td = link_to(check.commit_sha[0..7], check.commit_url)
                       - else
-                        td = t('.no_data')
+                        td.fst-italic.text-danger = t('.no_data')
 
                       - if check.passed.nil?
-                        td = t('.no_data')
+                        td.fst-italic.text-danger = t('.no_data')
                       - else
                         td = t(check.passed)
 

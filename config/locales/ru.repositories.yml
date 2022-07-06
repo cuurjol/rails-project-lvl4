@@ -6,6 +6,7 @@ ru:
         main_title: Мои репозитории
         search_form_title: Форма поиска репозиториев
         actions_table_column: Действия
+        no_data: Нет данных
         actions:
           create_repository: Создать репозитрий
           show_repository: Показать

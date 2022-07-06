@@ -7,6 +7,10 @@ class UpdateRepositoryInfoJob < ApplicationJob
     repository = Repository.find(repository_id)
     current_user = repository.user
     repository.update!(repository_params(repository.github_id, current_user))
+    repository.finish!
+  rescue StandardError => e
+    Rails.logger.debug(e.full_message)
+    repository.fail!
   end
 
   private

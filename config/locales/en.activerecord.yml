@@ -13,6 +13,10 @@ en:
 
     attributes:
       repository:
+        aasm_state: State
+        aasm_state/fetching: Fetching
+        aasm_state/success: Success
+        aasm_state/failure: Failure
         name: Name
         full_name: Full name
         description: Description

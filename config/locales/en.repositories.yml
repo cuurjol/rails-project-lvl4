@@ -6,6 +6,7 @@ en:
         main_title: My repositories
         search_form_title: Repository search form
         actions_table_column: Actions
+        no_data: No data
         actions:
           create_repository: Create repository
           show_repository: Show

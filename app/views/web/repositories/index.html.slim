@@ -17,18 +17,36 @@
                   th[scope='col'] = Repository.human_attribute_name(:description)
                   th[scope='col'] = Repository.human_attribute_name(:language)
                   th[scope='col'] = Repository::Check.human_attribute_name(:passed)
+                  th[scope='col'] = Repository.human_attribute_name(:aasm_state)
                   th.w-25[scope='col'] = t('.actions_table_column')
               tbody.border-dark
                 - @repositories.each.with_index(@pagy.offset + 1) do |repository, i|
                   tr
                     th[scope='row'] = i
-                    td = repository.name || render(partial: 'layouts/shared/spinner')
-                    td = repository.description || render(partial: 'layouts/shared/spinner')
-                    td = repository.language || render(partial: 'layouts/shared/spinner')
-                    - if repository.checks.last.present?
-                      td = t(repository.checks.last.passed)
-                    - else
+                    - if repository.fetching?
                       td = render(partial: 'layouts/shared/spinner')
+                      td = render(partial: 'layouts/shared/spinner')
+                      td = render(partial: 'layouts/shared/spinner')
+                      td = render(partial: 'layouts/shared/spinner')
+                    - elsif repository.failure?
+                      td.fst-italic.text-danger = t('.no_data')
+                      td.fst-italic.text-danger = t('.no_data')
+                      td.fst-italic.text-danger = t('.no_data')
+                      td.fst-italic.text-danger = t('.no_data')
+                    - else
+                      td = repository.name
+                      td = repository.description
+                      td = repository.language
+                      - if repository.checks.last.present?
+                        - if repository.checks.last.pending?
+                          td = render(partial: 'layouts/shared/spinner')
+                        - elsif repository.checks.last.passed.nil?
+                          td.fst-italic.text-danger = t('.no_data')
+                        - else
+                          td = t(repository.checks.last.passed)
+                      - else
+                        td = render(partial: 'layouts/shared/spinner')
+                    td = repository.aasm.human_state
                     td
                       .d-flex.justify-content-center
                         = link_to(t('.actions.show_repository'), repository_path(repository),
@@ -38,7 +56,7 @@
                                 data: { confirm: t('.actions.confirm_destruction') })
               tfoot.table-dark.border-dark
                 tr
-                  td.border-bottom-0[colspan='6']
+                  td.border-bottom-0[colspan='7']
                     .d-flex.flex-wrap.justify-content-between.align-items-center
                       .mb-2.mb-md-0
                         == pagy_info(@pagy)

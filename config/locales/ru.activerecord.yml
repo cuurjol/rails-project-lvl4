@@ -13,6 +13,10 @@ ru:
 
     attributes:
       repository:
+        aasm_state: Состояние
+        aasm_state/fetching: Получение
+        aasm_state/success: Успех
+        aasm_state/failure: Неудача
         name: Название
         full_name: Полное название
         description: Описание
