@@ -18,7 +18,7 @@ module Stubs
       { commit_url: Faker::Internet.url, commit_sha: Faker::Crypto.sha1 }
     end
 
-    def create_hook(_github_id); end
+    def create_hook(_github_id, _api_url); end
 
     def remove_hook(_github_id); end
 

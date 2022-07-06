@@ -24,9 +24,8 @@ class GithubClient
     { commit_url: commits.first['html_url'], commit_sha: commits.first['sha'] }
   end
 
-  def create_hook(github_id)
-    url = Rails.application.routes.url_helpers.api_checks_url
-    config = { url: url, content_type: 'json' }
+  def create_hook(github_id, api_url)
+    config = { url: api_url, content_type: 'json' }
     options = { events: ['push'], active: true }
     @client.create_hook(github_id, 'web', config, options)
   end
