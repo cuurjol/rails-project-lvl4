@@ -4,14 +4,19 @@ ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
 require 'webmock/minitest'
-require 'helpers/custom_assertions_helper'
-require 'helpers/file_loader_helper'
+require 'support/custom_assertions_helper'
+require 'support/file_loader_helper'
 OmniAuth.config.test_mode = true
 
 module ActiveSupport
   class TestCase
     include CustomAssertionsHelper
     include FileLoaderHelper
+
+    setup do
+      queue_adapter.perform_enqueued_jobs = true
+      queue_adapter.perform_enqueued_at_jobs = true
+    end
 
     # Run tests in parallel with specified workers
     parallelize(workers: :number_of_processors)

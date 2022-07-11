@@ -6,7 +6,7 @@
         th[scope='col'] = t('.rule_column')
         th[scope='col'] = t('.line_column_column')
     tbody.border-dark
-      - offenses_pagy.last.each do |offense|
+      - offenses.each do |offense|
         tr
           td = offense['message']
           td = offense['rule']
@@ -16,6 +16,6 @@
         td.border-bottom-0[colspan='6']
           .d-flex.flex-wrap.justify-content-between.align-items-center
             .mb-2.mb-md-0
-              == pagy_info(offenses_pagy.first)
+              == pagy_info(pagy_offenses)
             .pagination-sm
-              == pagy_bootstrap_nav_js(offenses_pagy.first) if offenses_pagy.first.pages > 1
+              == pagy_bootstrap_nav_js(pagy_offenses) if pagy_offenses.pages > 1

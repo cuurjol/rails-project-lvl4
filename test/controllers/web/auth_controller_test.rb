@@ -34,6 +34,7 @@ module Web
       sign_in(users(:regular))
       delete(sign_out_url)
       assert_redirected_to(root_url)
+      assert_not(signed_in?)
     end
 
     test 'should not destroy an invalid session' do

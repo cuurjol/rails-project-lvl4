@@ -5,9 +5,10 @@ module Parsers
     class << self
       def build_data(text)
         json_hash = JSON.parse(text, symbolize_names: true)
-        passed = json_hash.sum { |file_hash| file_hash[:errorCount] }.zero?
+        offense_count = json_hash.sum { |file| file[:errorCount] }
+        passed = offense_count.zero?
         offense_files = build_offense_files(json_hash)
-        { passed: passed, offense_files: offense_files }
+        { offense_count: offense_count, passed: passed, offense_files: offense_files }
       end
 
       private

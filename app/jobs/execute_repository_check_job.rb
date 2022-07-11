@@ -5,15 +5,12 @@ class ExecuteRepositoryCheckJob < ApplicationJob
 
   def perform(check_id)
     check = Repository::Check.find(check_id)
-
-    begin
-      start_process(check)
-    rescue StandardError => e
-      Rails.logger.debug(e.full_message)
-      reject_process(check)
-    ensure
-      finish_process(check)
-    end
+    start_process(check)
+  rescue StandardError => e
+    Rails.logger.debug(e.full_message)
+    fail_process(check)
+  ensure
+    finish_process(check)
   end
 
   private
@@ -24,9 +21,9 @@ class ExecuteRepositoryCheckJob < ApplicationJob
     check.finish!
   end
 
-  def reject_process(check)
+  def fail_process(check)
     check.passed = false
-    check.reject!
+    check.fail!
   end
 
   def finish_process(check)
@@ -37,7 +34,7 @@ class ExecuteRepositoryCheckJob < ApplicationJob
 
   def check_params(repository)
     scan_result = ApplicationContainer[:repository_manager].scan_repository(repository)
-    github_client = ApplicationContainer[:github_client].new(repository.user.id, repository.user.token)
+    github_client = ApplicationContainer[:github_client].new(repository.user.token)
     linter_parser = "parsers/#{repository.language}_linter".classify.constantize
     commit_data = github_client.fetch_last_commit(repository.github_id)
     linter_parser.build_data(scan_result).merge(commit_data)

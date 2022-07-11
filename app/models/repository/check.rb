@@ -12,7 +12,7 @@ class Repository
         transitions from: :pending, to: :finished
       end
 
-      event :reject do
+      event :fail do
         transitions from: :pending, to: :failure
       end
     end

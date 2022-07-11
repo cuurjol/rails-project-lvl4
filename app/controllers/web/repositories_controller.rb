@@ -11,7 +11,7 @@ module Web
     def new
       authorize(Repository)
       @repository = Repository.new
-      @client_repos = ApplicationContainer[:github_client].new(current_user.id, current_user.token).client_repos
+      @client_repos = ApplicationContainer[:github_client].new(current_user.token).client_repos(current_user.id)
     end
 
     def create
@@ -22,8 +22,7 @@ module Web
         run_jobs(@repository)
         redirect_to(repositories_path, notice: t('.success'))
       else
-        flash.now.alert = t('.failure')
-        render(:new, status: :unprocessable_entity)
+        redirect_to(new_repository_path, alert: t('.failure'))
       end
     end
 

@@ -6,7 +6,7 @@ module Web
       auth = request.env['omniauth.auth']
       user = User.update_or_create_with_omniauth(auth)
 
-      if user.persisted?
+      if user.valid?
         sign_in(user)
         redirect_to(root_path, notice: t('.success', provider: auth.provider))
       else

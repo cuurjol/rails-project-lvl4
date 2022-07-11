@@ -14,9 +14,11 @@ table.table.table-bordered.table-sm.table-hover.border-dark.text-center.align-mi
           i.fa-solid.fa-circle-minus.fa-2x.icon-expanded
         td = offense_file['file_path']
         td = offense_file['offense_count']
-      tr.collapse id="table-offenses-#{i}"
-        td[colspan='3']
-          = render(partial: 'table_offenses', locals: { offenses_pagy: offenses_pagy_array[i] })
+      - if offenses_with_pagies[i].present?
+        - pagy_offenses, offenses = offenses_with_pagies[i]
+        tr.collapse id="table-offenses-#{i}"
+          td[colspan='3']
+            = render(partial: 'table_offenses', locals: { pagy_offenses: pagy_offenses, offenses: offenses })
   tfoot.table-dark.border-dark
     tr
       td.border-bottom-0[colspan='3']

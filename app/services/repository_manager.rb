@@ -3,7 +3,7 @@
 class RepositoryManager
   BASE_DIRECTORY = 'tmp/github_repositories'
   LINTERS = {
-    javascript: { utility_command: 'node_modules/eslint/bin/eslint.js', config: '.eslintrc.yml' },
+    javascript: { utility_command: 'node_modules/eslint/bin/eslint.js --no-eslintrc', config: '.eslintrc.yml' },
     ruby: { utility_command: 'bundle exec rubocop', config: '.rubocop.yml' }
   }.freeze
 
@@ -16,7 +16,7 @@ class RepositoryManager
       language = repository.language.to_sym
       files = directory_path(repository)
       utility_command, config = LINTERS[language].values
-      BashCommand.run("#{utility_command} #{files} --format json --config #{config}")
+      BashCommand.run("#{utility_command} --format json --config #{config} #{files}")
     end
 
     def remove_repository(repository)

@@ -8,10 +8,14 @@ class Repository < ApplicationRecord
 
   aasm do
     state :fetching, initial: true
-    state :success, :failure
+    state :finished, :failure
+
+    event :fetch do
+      transitions from: %i[fetching finished failure], to: :fetching
+    end
 
     event :finish do
-      transitions from: :fetching, to: :success
+      transitions from: :fetching, to: :finished
     end
 
     event :fail do

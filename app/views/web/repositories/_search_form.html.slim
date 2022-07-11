@@ -5,7 +5,7 @@
               label_html: { class: 'fst-italic' }, required: false)
     .col-lg-6
       = f.input(:language_eq, as: :select, label: t('.language_eq'),
-              collection: Repository.language.values.map(&:text).zip(Repository.language.values),
+              collection: Repository.language.values,
               wrapper_html: { class: 'my-2' }, label_html: { class: 'fst-italic' },
               input_html: { class: 'form-select' }, required: false)
   .custom-form-actions

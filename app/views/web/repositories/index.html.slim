@@ -27,25 +27,22 @@
                       td = render(partial: 'layouts/shared/spinner')
                       td = render(partial: 'layouts/shared/spinner')
                       td = render(partial: 'layouts/shared/spinner')
-                      td = render(partial: 'layouts/shared/spinner')
-                    - elsif repository.failure?
-                      td.fst-italic.text-danger = t('.no_data')
-                      td.fst-italic.text-danger = t('.no_data')
-                      td.fst-italic.text-danger = t('.no_data')
-                      td.fst-italic.text-danger = t('.no_data')
                     - else
-                      td = repository.name
-                      td = repository.description
-                      td = repository.language
-                      - if repository.checks.last.present?
-                        - if repository.checks.last.pending?
-                          td = render(partial: 'layouts/shared/spinner')
-                        - elsif repository.checks.last.passed.nil?
-                          td.fst-italic.text-danger = t('.no_data')
-                        - else
-                          td = t(repository.checks.last.passed)
-                      - else
+                      td class="#{repository.name.present? ? '' : 'fst-italic text-danger'}"
+                        = repository.name || t('.no_data')
+                      td class="#{repository.description.present? ? '' : 'fst-italic text-danger'}"
+                        = repository.description || t('.no_data')
+                      td class="#{repository.language.present? ? '' : 'fst-italic text-danger'}"
+                        = repository.language || t('.no_data')
+                    - last_check = repository.checks.last
+                    - if last_check.present?
+                      - if last_check.pending?
                         td = render(partial: 'layouts/shared/spinner')
+                      - else
+                        td class="#{last_check.passed.nil? ? 'fst-italic text-danger' : ''}"
+                          = t(last_check.passed) || t('.no_data')
+                    - else
+                      td.fst-italic.text-danger = t('.no_data')
                     td = repository.aasm.human_state
                     td
                       .d-flex.justify-content-center

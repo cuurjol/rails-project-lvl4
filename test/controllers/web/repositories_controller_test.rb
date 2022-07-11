@@ -38,7 +38,7 @@ module Web
       params = { repository: { github_id: github_id } }
 
       assert_difference(-> { Repository.count }) do
-        assert_enqueued_jobs(2, only: [UpdateRepositoryInfoJob, CreateGithubWebhookJob]) do
+        assert_performed_jobs(2, only: [UpdateRepositoryInfoJob, CreateGithubWebhookJob]) do
           post(repositories_url, params: params)
           assert_redirected_to(repositories_url)
           assert { Repository.exists?(github_id: github_id) }
@@ -48,9 +48,9 @@ module Web
 
     test 'should not create a new repository due to validation errors' do
       assert_no_difference(-> { Repository.count }) do
-        assert_no_enqueued_jobs(only: [UpdateRepositoryInfoJob, CreateGithubWebhookJob]) do
+        assert_no_performed_jobs(only: [UpdateRepositoryInfoJob, CreateGithubWebhookJob]) do
           post(repositories_url, params: { repository: { github_id: nil } })
-          assert_response(:unprocessable_entity)
+          assert_redirected_to(new_repository_url)
         end
       end
     end
@@ -60,7 +60,7 @@ module Web
       params = { repository: { github_id: github_id } }
 
       assert_no_difference(-> { Repository.count }) do
-        assert_no_enqueued_jobs(only: [UpdateRepositoryInfoJob, CreateGithubWebhookJob]) do
+        assert_no_performed_jobs(only: [UpdateRepositoryInfoJob, CreateGithubWebhookJob]) do
           assert_no_authorization do
             sign_out
             post(repositories_url, params: params)
@@ -91,7 +91,7 @@ module Web
       repository = repositories(:ruby)
 
       assert_difference(-> { Repository.count }, -1) do
-        assert_enqueued_with(job: RemoveGithubWebhookJob, args: [repository.github_id, current_user.id]) do
+        assert_performed_with(job: RemoveGithubWebhookJob, args: [repository.github_id, current_user.id]) do
           delete(repository_url(repository))
           assert_redirected_to(repositories_url)
           assert { !Repository.exists?(github_id: repository.github_id) }
@@ -101,7 +101,7 @@ module Web
 
     test 'failed pundit authorization to destroy an existing foreign repository' do
       assert_no_difference(-> { Repository.count }) do
-        assert_no_enqueued_jobs(only: RemoveGithubWebhookJob) do
+        assert_no_performed_jobs(only: RemoveGithubWebhookJob) do
           assert_no_authorization do
             delete(repository_url(repositories(:javascript)))
           end
@@ -111,7 +111,7 @@ module Web
 
     test 'failed pundit authorization to destroy an existing repository for anonymous user' do
       assert_no_difference(-> { Repository.count }) do
-        assert_no_enqueued_jobs(only: RemoveGithubWebhookJob) do
+        assert_no_performed_jobs(only: RemoveGithubWebhookJob) do
           assert_no_authorization do
             sign_out
             delete(repository_url(repositories(:ruby)))

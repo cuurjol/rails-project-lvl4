@@ -14,6 +14,7 @@ module Api
           assert { check.repository == repositories(:ruby) }
           assert { !check.passed? }
           assert { check.finished? }
+          assert { check.offense_count.positive? }
           assert { check.offense_files.present? }
         end
       end

@@ -12,14 +12,9 @@ module Web
 
       def show
         authorize(check)
-        if check.offense_files.present?
-          @offense_count = check.offense_files.sum { |offense_file| offense_file['offense_count'].to_i }
-          @pagy_offense_files, @offense_files = build_offense_files_pagy
-          @offenses_pagy_array = @offense_files.map.with_index do |offense_file, index|
-            build_offenses_pagy(offense_file, index)
-          end
-        else
-          @offense_count = 0
+        @pagy_offense_files, @offense_files = build_offense_files_pagy
+        @offenses_with_pagies = @offense_files.map.with_index do |offense_file, index|
+          build_offenses_pagy(offense_file, index)
         end
       end
 
@@ -35,7 +30,7 @@ module Web
           page_param: :offense_files,
           link_extra: 'data-remote="true"'
         }
-        pagy_array(check.offense_files, vars)
+        pagy_array(check.offense_files || [], vars)
       end
 
       def build_offenses_pagy(offense_file, index)

@@ -8,35 +8,28 @@
         .row.g-0
           .col-md-6
             h5
+              strong = "#{Repository.human_attribute_name(:aasm_state)}:"
+              span =< @repository.aasm.human_state
+          .col-md-6
+            h5
+              strong = "#{Repository.human_attribute_name(:github_id)}:"
+              span =< @repository.github_id
+          .col-md-6
+            h5
               strong = "#{Repository.human_attribute_name(:name)}:"
               - if @repository.fetching?
                 span =< render(partial: 'layouts/shared/spinner')
-              - elsif @repository.name.present?
-                span =< @repository.name
               - else
-                span.fst-italic.text-danger =< t('.no_data')
+                span class="#{@repository.name.present? ? '' : 'fst-italic text-danger'}"
+                  =< @repository.name || t('.no_data')
           .col-md-6
             h5
               strong = "#{Repository.human_attribute_name(:full_name)}:"
               - if @repository.fetching?
                 span =< render(partial: 'layouts/shared/spinner')
-              - elsif @repository.full_name.present?
-                span =< @repository.full_name
               - else
-                span.fst-italic.text-danger =< t('.no_data')
-          .col-md-6
-            h5
-              strong = "#{Repository.human_attribute_name(:language)}:"
-              - if @repository.fetching?
-                span =< render(partial: 'layouts/shared/spinner')
-              - elsif @repository.language.present?
-                span =< @repository.language
-              - else
-                span.fst-italic.text-danger =< t('.no_data')
-          .col-md-6
-            h5
-              strong = "#{Repository.human_attribute_name(:github_id)}:"
-              =< @repository.github_id
+                span class="#{@repository.full_name.present? ? '' : 'fst-italic text-danger'}"
+                  =< @repository.full_name || t('.no_data')
           .col-md-6
             h5
               strong = "#{Repository.human_attribute_name(:github_created_at)}:"
@@ -57,17 +50,20 @@
                 span.fst-italic.text-danger =< t('.no_data')
           .col-md-6
             h5
-              strong = "#{Repository.human_attribute_name(:aasm_state)}:"
-              =< @repository.aasm.human_state
+              strong = "#{Repository.human_attribute_name(:language)}:"
+              - if @repository.fetching?
+                span =< render(partial: 'layouts/shared/spinner')
+              - else
+                span class="#{@repository.language.present? ? '' : 'fst-italic text-danger'}"
+                  =< @repository.language || t('.no_data')
           .col-12
             h5
               strong = "#{Repository.human_attribute_name(:description)}:"
               - if @repository.fetching?
                 span =< render(partial: 'layouts/shared/spinner')
-              - elsif @repository.description.present?
-                span =< @repository.description
               - else
-                span.fst-italic.text-danger =< t('.no_data')
+                span class="#{@repository.description.present? ? '' : 'fst-italic text-danger'}"
+                  =< @repository.description || t('.no_data')
         hr
         .d-flex.flex-md-row.justify-content-between.flex-column.mb-4
           = link_to(t('.my_repository_link'), repositories_path, class: 'btn btn-primary my-2 my-md-0')
@@ -102,16 +98,12 @@
                       td = render(partial: 'layouts/shared/spinner')
                       td = render(partial: 'layouts/shared/spinner')
                     - else
-                      - if check.commit_sha.present?
+                      - if check.commit_sha.present? && check.commit_url.present?
                         td = link_to(check.commit_sha[0..7], check.commit_url)
                       - else
                         td.fst-italic.text-danger = t('.no_data')
-
-                      - if check.passed.nil?
-                        td.fst-italic.text-danger = t('.no_data')
-                      - else
-                        td = t(check.passed)
-
+                      td class="#{check.passed.nil? ? 'fst-italic text-danger' : ''}"
+                        = t(check.passed) || t('.no_data')
                     td = l(check.created_at, format: :long)
                     td = check.aasm.human_state
                     td

@@ -2,14 +2,14 @@
 
 module Stubs
   class GithubClient
-    def initialize(_user_id, _access_token); end # rubocop:disable
+    def initialize(_access_token); end # rubocop:disable
 
     def find_repo(_github_id)
       file_path = Rails.root.join('test/fixtures/files/found_github_repository.json')
       deserialize_to_struct(build_hash(file_path))
     end
 
-    def client_repos
+    def client_repos(_user_id)
       file_path = Rails.root.join('test/fixtures/files/github_repositories.json')
       build_hash(file_path).map { |repo| deserialize_to_struct(repo) }.map { |repo| [repo.full_name, repo.id] }
     end
