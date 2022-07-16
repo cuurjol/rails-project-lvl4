@@ -4,7 +4,7 @@ module Web
   class RepositoriesController < Web::ApplicationController
     def index
       authorize(Repository)
-      @search = Repository.includes(:checks).ransack(params[:q])
+      @search = Repository.includes(:checks).where(user: current_user).ransack(params[:q])
       @pagy, @repositories = pagy(@search.result.order(created_at: :desc))
     end
 

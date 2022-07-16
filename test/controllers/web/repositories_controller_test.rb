@@ -15,10 +15,9 @@ module Web
     end
 
     test 'failed pundit authorization to get a list of repositories' do
-      assert_no_authorization do
-        sign_out
-        get(repositories_url)
-      end
+      sign_out
+      get(repositories_url)
+      assert_redirected_to(root_url)
     end
 
     test 'should get a creating form of repository' do
@@ -27,14 +26,16 @@ module Web
     end
 
     test 'failed pundit authorization to view a creating form of repository' do
-      assert_no_authorization do
-        sign_out
-        get(new_repository_url)
-      end
+      sign_out
+      get(new_repository_url)
+      assert_redirected_to(root_url)
     end
 
     test 'should create a new repository' do
       github_id = rand(999_999)
+      repo_attributes = %w[name full_name description language html_url github_created_at github_updated_at clone_url]
+      github_attributes = %w[name full_name description language html_url created_at updated_at clone_url]
+      github_repository = JSON.parse(load_fixture('files/found_github_repository.json'))
       params = { repository: { github_id: github_id } }
 
       assert_difference(-> { Repository.count }) do
@@ -42,6 +43,15 @@ module Web
           post(repositories_url, params: params)
           assert_redirected_to(repositories_url)
           assert { Repository.exists?(github_id: github_id) }
+
+          repository = Repository.find_by(github_id: github_id)
+          repo_attributes.zip(github_attributes).each do |repo_attr, github_attr|
+            if repo_attr == 'language'
+              assert { repository[repo_attr].capitalize == github_repository[github_attr] }
+            else
+              assert { repository[repo_attr] == github_repository[github_attr] }
+            end
+          end
         end
       end
     end
@@ -51,6 +61,7 @@ module Web
         assert_no_performed_jobs(only: [UpdateRepositoryInfoJob, CreateGithubWebhookJob]) do
           post(repositories_url, params: { repository: { github_id: nil } })
           assert_redirected_to(new_repository_url)
+          assert { !Repository.exists?(github_id: nil) }
         end
       end
     end
@@ -61,10 +72,10 @@ module Web
 
       assert_no_difference(-> { Repository.count }) do
         assert_no_performed_jobs(only: [UpdateRepositoryInfoJob, CreateGithubWebhookJob]) do
-          assert_no_authorization do
-            sign_out
-            post(repositories_url, params: params)
-          end
+          sign_out
+          post(repositories_url, params: params)
+          assert_redirected_to(root_url)
+          assert { !Repository.exists?(github_id: github_id) }
         end
       end
     end
@@ -75,16 +86,14 @@ module Web
     end
 
     test 'failed pundit authorization to view a foreign repository' do
-      assert_no_authorization do
-        get(repository_url(repositories(:javascript)))
-      end
+      get(repository_url(repositories(:javascript)))
+      assert_redirected_to(root_url)
     end
 
     test 'failed pundit authorization to view a repository for anonymous user' do
-      assert_no_authorization do
-        sign_out
-        get(repository_url(repositories(:ruby)))
-      end
+      sign_out
+      get(repository_url(repositories(:ruby)))
+      assert_redirected_to(root_url)
     end
 
     test 'should destroy an existing repository' do
@@ -102,9 +111,8 @@ module Web
     test 'failed pundit authorization to destroy an existing foreign repository' do
       assert_no_difference(-> { Repository.count }) do
         assert_no_performed_jobs(only: RemoveGithubWebhookJob) do
-          assert_no_authorization do
-            delete(repository_url(repositories(:javascript)))
-          end
+          delete(repository_url(repositories(:javascript)))
+          assert_redirected_to(root_url)
         end
       end
     end
@@ -112,60 +120,47 @@ module Web
     test 'failed pundit authorization to destroy an existing repository for anonymous user' do
       assert_no_difference(-> { Repository.count }) do
         assert_no_performed_jobs(only: RemoveGithubWebhookJob) do
-          assert_no_authorization do
-            sign_out
-            delete(repository_url(repositories(:ruby)))
-          end
+          sign_out
+          delete(repository_url(repositories(:ruby)))
+          assert_redirected_to(root_url)
         end
       end
     end
 
     test 'should update an existing repository from Github' do
-      github_repo = JSON.parse(load_fixture('files/found_github_repository.json'), symbolize_names: true)
+      repo_attributes = %w[name full_name description html_url github_created_at github_updated_at clone_url]
+      github_attributes = %w[name full_name description html_url created_at updated_at clone_url]
+      github_repository = JSON.parse(load_fixture('files/found_github_repository.json'))
       repository = repositories(:ruby)
 
-      expression_array = [-> { repository.reload.name }, -> { repository.reload.full_name },
-                          -> { repository.reload.description }, -> { repository.reload.html_url },
-                          -> { repository.reload.github_created_at }, -> { repository.reload.github_updated_at }]
-
-      to_array = [github_repo[:name], github_repo[:full_name], github_repo[:description],
-                  github_repo[:html_url], github_repo[:created_at], github_repo[:updated_at]]
-
       assert_performed_with(job: UpdateRepositoryInfoJob, args: [repository.id]) do
-        assert_many_changes(expression_array, to_array: to_array) do
-          patch(update_from_github_repository_url(repository))
+        patch(update_from_github_repository_url(repository))
+
+        repository.reload
+        repo_attributes.zip(github_attributes).each do |repo_attr, github_attr|
+          assert { repository[repo_attr] == github_repository[github_attr] }
         end
       end
     end
 
     test 'failed pundit authorization to update an existing foreign repository' do
       repository = repositories(:javascript)
-      expression_array = [-> { repository.reload.name }, -> { repository.reload.full_name },
-                          -> { repository.reload.description }, -> { repository.reload.html_url },
-                          -> { repository.reload.github_created_at }, -> { repository.reload.github_updated_at }]
 
       assert_no_performed_jobs(only: UpdateRepositoryInfoJob) do
-        assert_no_many_changes(expression_array) do
-          assert_no_authorization do
-            patch(update_from_github_repository_url(repository))
-          end
-        end
+        patch(update_from_github_repository_url(repository))
+        assert_redirected_to(root_url)
+        assert { repository.attributes == repository.reload.attributes }
       end
     end
 
     test 'failed pundit authorization to update an existing repository for anonymous user' do
       repository = repositories(:ruby)
-      expression_array = [-> { repository.reload.name }, -> { repository.reload.full_name },
-                          -> { repository.reload.description }, -> { repository.reload.html_url },
-                          -> { repository.reload.github_created_at }, -> { repository.reload.github_updated_at }]
 
       assert_no_performed_jobs(only: UpdateRepositoryInfoJob) do
-        assert_no_many_changes(expression_array) do
-          assert_no_authorization do
-            sign_out
-            patch(update_from_github_repository_url(repository))
-          end
-        end
+        sign_out
+        patch(update_from_github_repository_url(repository))
+        assert_redirected_to(root_url)
+        assert { repository.attributes == repository.reload.attributes }
       end
     end
   end

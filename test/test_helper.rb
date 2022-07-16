@@ -4,13 +4,11 @@ ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
 require 'webmock/minitest'
-require 'support/custom_assertions_helper'
 require 'support/file_loader_helper'
 OmniAuth.config.test_mode = true
 
 module ActiveSupport
   class TestCase
-    include CustomAssertionsHelper
     include FileLoaderHelper
 
     setup do

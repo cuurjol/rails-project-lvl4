@@ -30,10 +30,9 @@ module Web
       test 'failed pundit authorization to create a new check' do
         assert_no_difference(-> { Repository::Check.count }) do
           assert_no_performed_jobs(only: ExecuteRepositoryCheckJob) do
-            assert_no_authorization do
-              sign_out
-              post(repository_checks_url(@ruby_repository))
-            end
+            sign_out
+            post(repository_checks_url(@ruby_repository))
+            assert_redirected_to(root_url)
           end
         end
       end
@@ -44,16 +43,14 @@ module Web
       end
 
       test 'failed pundit authorization to view a foreign check' do
-        assert_no_authorization do
-          get(repository_check_url(@javascript_repository, @javascript_repository.checks.last))
-        end
+        get(repository_check_url(@javascript_repository, @javascript_repository.checks.last))
+        assert_redirected_to(root_url)
       end
 
       test 'failed pundit authorization to view a check for anonymous user' do
-        assert_no_authorization do
-          sign_out
-          get(repository_check_url(@ruby_repository, @ruby_repository.checks.last))
-        end
+        sign_out
+        get(repository_check_url(@ruby_repository, @ruby_repository.checks.last))
+        assert_redirected_to(root_url)
       end
     end
   end
